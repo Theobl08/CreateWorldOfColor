@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/ladder",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "0": "createworldofcolor:block/ladder_gray_hoop",
+    "1": "createworldofcolor:block/ladder_gray",
+    "particle": "createworldofcolor:block/ladder_gray"
+  }
+}

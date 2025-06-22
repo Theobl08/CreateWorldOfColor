@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/fluid_pipe/connection/east",
+  "textures": {
+    "0": "createworldofcolor:block/light_gray_pipes",
+    "particle": "createworldofcolor:block/light_gray_pipes"
+  }
+}

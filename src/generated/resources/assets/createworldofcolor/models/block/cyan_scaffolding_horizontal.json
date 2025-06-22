@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/scaffold/block_horizontal",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "casing": "createworldofcolor:block/cyan_casing",
+    "inside": "createworldofcolor:block/scaffold/cyan_scaffold_inside",
+    "particle": "createworldofcolor:block/scaffold/cyan_scaffold",
+    "side": "createworldofcolor:block/scaffold/cyan_scaffold",
+    "top": "createworldofcolor:block/funnel/cyan_funnel_frame"
+  }
+}

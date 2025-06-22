@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/fluid_pipe/connection/up",
+  "textures": {
+    "0": "createworldofcolor:block/brown_pipes",
+    "particle": "createworldofcolor:block/brown_pipes"
+  }
+}

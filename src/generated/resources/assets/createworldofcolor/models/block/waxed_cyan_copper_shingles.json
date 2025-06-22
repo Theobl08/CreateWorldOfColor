@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "createworldofcolor:block/copper/cyan_copper_roof_top",
+    "side": "createworldofcolor:block/copper/cyan_copper_shingles"
+  }
+}

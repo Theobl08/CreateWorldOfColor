@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/scaffold/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "casing": "createworldofcolor:block/purple_casing",
+    "inside": "createworldofcolor:block/scaffold/purple_scaffold_inside",
+    "particle": "createworldofcolor:block/scaffold/purple_scaffold",
+    "side": "createworldofcolor:block/scaffold/purple_scaffold",
+    "top": "createworldofcolor:block/funnel/purple_funnel_frame"
+  }
+}

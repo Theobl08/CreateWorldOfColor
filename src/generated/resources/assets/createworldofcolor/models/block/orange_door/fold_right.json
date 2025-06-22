@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/copper_door/fold_right",
+  "textures": {
+    "0": "createworldofcolor:block/orange_door_side",
+    "2": "createworldofcolor:block/orange_door_top",
+    "3": "createworldofcolor:block/orange_door_bottom",
+    "particle": "createworldofcolor:block/orange_casing"
+  }
+}

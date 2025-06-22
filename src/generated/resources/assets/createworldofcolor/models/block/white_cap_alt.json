@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/bars/cap_alt",
+  "textures": {
+    "bars": "createworldofcolor:block/bars/white_bars",
+    "edge": "createworldofcolor:block/bars/white_bars_edge",
+    "particle": "createworldofcolor:block/bars/white_bars"
+  }
+}

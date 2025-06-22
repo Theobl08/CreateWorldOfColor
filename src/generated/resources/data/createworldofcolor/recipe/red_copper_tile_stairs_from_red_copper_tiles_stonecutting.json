@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "createworldofcolor:red_copper_tiles"
+  },
+  "result": {
+    "count": 1,
+    "id": "createworldofcolor:red_copper_tile_stairs"
+  }
+}

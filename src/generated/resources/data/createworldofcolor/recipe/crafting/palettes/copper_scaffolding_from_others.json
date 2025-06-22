@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "createworldofcolor:dyeable_scaffolds"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create:copper_scaffolding"
+  }
+}

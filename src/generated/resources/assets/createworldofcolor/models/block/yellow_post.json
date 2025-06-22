@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/bars/post",
+  "textures": {
+    "bars": "createworldofcolor:block/bars/yellow_bars",
+    "edge": "createworldofcolor:block/bars/yellow_bars_edge",
+    "particle": "createworldofcolor:block/bars/yellow_bars"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/bars/side",
+  "textures": {
+    "bars": "createworldofcolor:block/bars/light_blue_bars",
+    "edge": "createworldofcolor:block/bars/light_blue_bars_edge",
+    "particle": "createworldofcolor:block/bars/light_blue_bars"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/fluid_pipe/item",
+  "textures": {
+    "1": "createworldofcolor:block/red_pipes",
+    "particle": "createworldofcolor:block/copper/red_copper_roof_top"
+  }
+}

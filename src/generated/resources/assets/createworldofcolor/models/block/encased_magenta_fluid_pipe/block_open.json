@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/encased_fluid_pipe/block_open",
+  "textures": {
+    "0": "createworldofcolor:block/encased_magenta_pipe",
+    "particle": "createworldofcolor:block/encased_magenta_pipe"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "createworldofcolor:vanilla_lime_seat"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create:lime_seat"
+  }
+}

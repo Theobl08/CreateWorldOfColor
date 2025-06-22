@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=false": {
+      "model": "createworldofcolor:block/yellow_scaffolding"
+    },
+    "bottom=true": {
+      "model": "createworldofcolor:block/yellow_scaffolding_horizontal"
+    }
+  }
+}

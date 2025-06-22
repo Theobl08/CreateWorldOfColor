@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/copper_door/block_bottom",
+  "textures": {
+    "0": "createworldofcolor:block/orange_door_side",
+    "2": "createworldofcolor:block/orange_door_bottom",
+    "particle": "createworldofcolor:block/orange_casing"
+  }
+}

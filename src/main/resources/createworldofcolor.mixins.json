@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.theobl.createworldofcolor.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "createworldofcolor.refmap.json",
+  "mixins": [
+    "FluidPropagatorMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

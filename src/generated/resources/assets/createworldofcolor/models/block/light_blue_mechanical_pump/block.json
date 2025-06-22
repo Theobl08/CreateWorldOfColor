@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/mechanical_pump/block",
+  "textures": {
+    "4": "createworldofcolor:block/light_blue_pump",
+    "particle": "createworldofcolor:block/light_blue_pump"
+  }
+}

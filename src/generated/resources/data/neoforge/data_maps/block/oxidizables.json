@@ -1,0 +1,274 @@
+{
+  "values": {
+    "createworldofcolor:black_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:brown_copper_shingle_slab"
+    },
+    "createworldofcolor:black_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:brown_copper_shingle_stairs"
+    },
+    "createworldofcolor:black_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:brown_copper_shingles"
+    },
+    "createworldofcolor:black_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:brown_copper_tile_slab"
+    },
+    "createworldofcolor:black_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:brown_copper_tile_stairs"
+    },
+    "createworldofcolor:black_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:brown_copper_tiles"
+    },
+    "createworldofcolor:blue_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:purple_copper_shingle_slab"
+    },
+    "createworldofcolor:blue_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:purple_copper_shingle_stairs"
+    },
+    "createworldofcolor:blue_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:purple_copper_shingles"
+    },
+    "createworldofcolor:blue_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:purple_copper_tile_slab"
+    },
+    "createworldofcolor:blue_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:purple_copper_tile_stairs"
+    },
+    "createworldofcolor:blue_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:purple_copper_tiles"
+    },
+    "createworldofcolor:brown_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:red_copper_shingle_slab"
+    },
+    "createworldofcolor:brown_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:red_copper_shingle_stairs"
+    },
+    "createworldofcolor:brown_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:red_copper_shingles"
+    },
+    "createworldofcolor:brown_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:red_copper_tile_slab"
+    },
+    "createworldofcolor:brown_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:red_copper_tile_stairs"
+    },
+    "createworldofcolor:brown_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:red_copper_tiles"
+    },
+    "createworldofcolor:cyan_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:light_blue_copper_shingle_slab"
+    },
+    "createworldofcolor:cyan_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:light_blue_copper_shingle_stairs"
+    },
+    "createworldofcolor:cyan_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:light_blue_copper_shingles"
+    },
+    "createworldofcolor:cyan_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:light_blue_copper_tile_slab"
+    },
+    "createworldofcolor:cyan_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:light_blue_copper_tile_stairs"
+    },
+    "createworldofcolor:cyan_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:light_blue_copper_tiles"
+    },
+    "createworldofcolor:gray_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:black_copper_shingle_slab"
+    },
+    "createworldofcolor:gray_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:black_copper_shingle_stairs"
+    },
+    "createworldofcolor:gray_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:black_copper_shingles"
+    },
+    "createworldofcolor:gray_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:black_copper_tile_slab"
+    },
+    "createworldofcolor:gray_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:black_copper_tile_stairs"
+    },
+    "createworldofcolor:gray_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:black_copper_tiles"
+    },
+    "createworldofcolor:green_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:cyan_copper_shingle_slab"
+    },
+    "createworldofcolor:green_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:cyan_copper_shingle_stairs"
+    },
+    "createworldofcolor:green_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:cyan_copper_shingles"
+    },
+    "createworldofcolor:green_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:cyan_copper_tile_slab"
+    },
+    "createworldofcolor:green_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:cyan_copper_tile_stairs"
+    },
+    "createworldofcolor:green_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:cyan_copper_tiles"
+    },
+    "createworldofcolor:light_blue_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:blue_copper_shingle_slab"
+    },
+    "createworldofcolor:light_blue_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:blue_copper_shingle_stairs"
+    },
+    "createworldofcolor:light_blue_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:blue_copper_shingles"
+    },
+    "createworldofcolor:light_blue_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:blue_copper_tile_slab"
+    },
+    "createworldofcolor:light_blue_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:blue_copper_tile_stairs"
+    },
+    "createworldofcolor:light_blue_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:blue_copper_tiles"
+    },
+    "createworldofcolor:light_gray_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:gray_copper_shingle_slab"
+    },
+    "createworldofcolor:light_gray_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:gray_copper_shingle_stairs"
+    },
+    "createworldofcolor:light_gray_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:gray_copper_shingles"
+    },
+    "createworldofcolor:light_gray_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:gray_copper_tile_slab"
+    },
+    "createworldofcolor:light_gray_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:gray_copper_tile_stairs"
+    },
+    "createworldofcolor:light_gray_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:gray_copper_tiles"
+    },
+    "createworldofcolor:lime_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:green_copper_shingle_slab"
+    },
+    "createworldofcolor:lime_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:green_copper_shingle_stairs"
+    },
+    "createworldofcolor:lime_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:green_copper_shingles"
+    },
+    "createworldofcolor:lime_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:green_copper_tile_slab"
+    },
+    "createworldofcolor:lime_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:green_copper_tile_stairs"
+    },
+    "createworldofcolor:lime_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:green_copper_tiles"
+    },
+    "createworldofcolor:magenta_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:pink_copper_shingle_slab"
+    },
+    "createworldofcolor:magenta_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:pink_copper_shingle_stairs"
+    },
+    "createworldofcolor:magenta_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:pink_copper_shingles"
+    },
+    "createworldofcolor:magenta_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:pink_copper_tile_slab"
+    },
+    "createworldofcolor:magenta_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:pink_copper_tile_stairs"
+    },
+    "createworldofcolor:magenta_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:pink_copper_tiles"
+    },
+    "createworldofcolor:orange_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:yellow_copper_shingle_slab"
+    },
+    "createworldofcolor:orange_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:yellow_copper_shingle_stairs"
+    },
+    "createworldofcolor:orange_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:yellow_copper_shingles"
+    },
+    "createworldofcolor:orange_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:yellow_copper_tile_slab"
+    },
+    "createworldofcolor:orange_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:yellow_copper_tile_stairs"
+    },
+    "createworldofcolor:orange_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:yellow_copper_tiles"
+    },
+    "createworldofcolor:purple_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:magenta_copper_shingle_slab"
+    },
+    "createworldofcolor:purple_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:magenta_copper_shingle_stairs"
+    },
+    "createworldofcolor:purple_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:magenta_copper_shingles"
+    },
+    "createworldofcolor:purple_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:magenta_copper_tile_slab"
+    },
+    "createworldofcolor:purple_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:magenta_copper_tile_stairs"
+    },
+    "createworldofcolor:purple_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:magenta_copper_tiles"
+    },
+    "createworldofcolor:red_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:orange_copper_shingle_slab"
+    },
+    "createworldofcolor:red_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:orange_copper_shingle_stairs"
+    },
+    "createworldofcolor:red_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:orange_copper_shingles"
+    },
+    "createworldofcolor:red_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:orange_copper_tile_slab"
+    },
+    "createworldofcolor:red_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:orange_copper_tile_stairs"
+    },
+    "createworldofcolor:red_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:orange_copper_tiles"
+    },
+    "createworldofcolor:white_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:light_gray_copper_shingle_slab"
+    },
+    "createworldofcolor:white_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:light_gray_copper_shingle_stairs"
+    },
+    "createworldofcolor:white_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:light_gray_copper_shingles"
+    },
+    "createworldofcolor:white_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:light_gray_copper_tile_slab"
+    },
+    "createworldofcolor:white_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:light_gray_copper_tile_stairs"
+    },
+    "createworldofcolor:white_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:light_gray_copper_tiles"
+    },
+    "createworldofcolor:yellow_copper_shingle_slab": {
+      "next_oxidation_stage": "createworldofcolor:lime_copper_shingle_slab"
+    },
+    "createworldofcolor:yellow_copper_shingle_stairs": {
+      "next_oxidation_stage": "createworldofcolor:lime_copper_shingle_stairs"
+    },
+    "createworldofcolor:yellow_copper_shingles": {
+      "next_oxidation_stage": "createworldofcolor:lime_copper_shingles"
+    },
+    "createworldofcolor:yellow_copper_tile_slab": {
+      "next_oxidation_stage": "createworldofcolor:lime_copper_tile_slab"
+    },
+    "createworldofcolor:yellow_copper_tile_stairs": {
+      "next_oxidation_stage": "createworldofcolor:lime_copper_tile_stairs"
+    },
+    "createworldofcolor:yellow_copper_tiles": {
+      "next_oxidation_stage": "createworldofcolor:lime_copper_tiles"
+    }
+  }
+}

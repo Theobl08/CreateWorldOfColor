@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/mechanical_pump/block",
+  "textures": {
+    "4": "createworldofcolor:block/pink_pump",
+    "particle": "createworldofcolor:block/pink_pump"
+  }
+}

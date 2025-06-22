@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/fluid_pipe/rim/east",
+  "textures": {
+    "0": "createworldofcolor:block/lime_pipes",
+    "particle": "createworldofcolor:block/lime_pipes"
+  }
+}

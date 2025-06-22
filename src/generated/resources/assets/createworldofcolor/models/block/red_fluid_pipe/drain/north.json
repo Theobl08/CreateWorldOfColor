@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/fluid_pipe/drain/north",
+  "textures": {
+    "0": "createworldofcolor:block/red_pipes",
+    "particle": "createworldofcolor:block/red_pipes"
+  }
+}

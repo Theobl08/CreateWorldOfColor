@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/copper_door/fold_right",
+  "textures": {
+    "0": "createworldofcolor:block/magenta_door_side",
+    "2": "createworldofcolor:block/magenta_door_top",
+    "3": "createworldofcolor:block/magenta_door_bottom",
+    "particle": "createworldofcolor:block/magenta_casing"
+  }
+}

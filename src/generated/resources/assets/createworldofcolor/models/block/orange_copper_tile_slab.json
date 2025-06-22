@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "createworldofcolor:block/copper/orange_copper_roof_top",
+    "side": "createworldofcolor:block/copper/orange_copper_tiles",
+    "top": "createworldofcolor:block/copper/orange_copper_roof_top"
+  }
+}

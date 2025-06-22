@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/encased_fluid_pipe/block_flat",
+  "textures": {
+    "0": "createworldofcolor:block/pink_casing",
+    "particle": "createworldofcolor:block/pink_casing"
+  }
+}

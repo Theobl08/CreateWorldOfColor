@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/fluid_pipe/core_z",
+  "textures": {
+    "0": "createworldofcolor:block/blue_pipes_connected",
+    "particle": "createworldofcolor:block/copper/blue_copper_roof_top"
+  }
+}

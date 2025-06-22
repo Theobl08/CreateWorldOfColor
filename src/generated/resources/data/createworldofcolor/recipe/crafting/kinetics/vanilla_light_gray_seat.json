@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "create:light_gray_seat"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createworldofcolor:vanilla_light_gray_seat"
+  }
+}

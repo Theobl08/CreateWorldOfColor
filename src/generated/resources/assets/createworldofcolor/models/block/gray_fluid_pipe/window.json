@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/fluid_pipe/window",
+  "textures": {
+    "0": "createworldofcolor:block/glass_gray_fluid_pipe",
+    "particle": "createworldofcolor:block/copper/gray_copper_roof_top"
+  }
+}

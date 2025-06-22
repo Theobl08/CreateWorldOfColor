@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "createworldofcolor:block/waxed_blue_copper_tile_slab"
+    },
+    "type=double": {
+      "model": "createworldofcolor:block/blue_copper_tiles"
+    },
+    "type=top": {
+      "model": "createworldofcolor:block/waxed_blue_copper_tile_slab_top"
+    }
+  }
+}

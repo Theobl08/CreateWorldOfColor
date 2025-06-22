@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "create:red_seat"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createworldofcolor:vanilla_red_seat"
+  }
+}

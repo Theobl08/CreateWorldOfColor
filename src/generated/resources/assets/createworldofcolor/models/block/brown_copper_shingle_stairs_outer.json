@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "createworldofcolor:block/copper/brown_copper_roof_top",
+    "side": "createworldofcolor:block/copper/brown_copper_shingles",
+    "top": "createworldofcolor:block/copper/brown_copper_roof_top"
+  }
+}

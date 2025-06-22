@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "createworldofcolor:dyeable_doors"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create:copper_door"
+  }
+}

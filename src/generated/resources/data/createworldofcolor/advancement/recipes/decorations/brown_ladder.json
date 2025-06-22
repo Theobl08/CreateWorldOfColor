@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ladder": {
+      "conditions": {
+        "items": [
+          {
+            "items": "create:copper_ladder"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "createworldofcolor:brown_ladder"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ladder"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "createworldofcolor:brown_ladder"
+    ]
+  }
+}

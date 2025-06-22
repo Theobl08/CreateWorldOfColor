@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "createworldofcolor:block/magenta_copper_tile_slab"
+    },
+    "type=double": {
+      "model": "createworldofcolor:block/magenta_copper_tiles"
+    },
+    "type=top": {
+      "model": "createworldofcolor:block/magenta_copper_tile_slab_top"
+    }
+  }
+}

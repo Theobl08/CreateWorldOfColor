@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_purple_copper_tiles": {
+      "conditions": {
+        "items": [
+          {
+            "items": "createworldofcolor:purple_copper_tiles"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "createworldofcolor:purple_copper_tile_slab_from_purple_copper_tiles_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_purple_copper_tiles"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "createworldofcolor:purple_copper_tile_slab_from_purple_copper_tiles_stonecutting"
+    ]
+  }
+}
