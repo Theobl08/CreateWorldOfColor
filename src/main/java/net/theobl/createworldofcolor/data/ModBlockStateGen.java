@@ -5,6 +5,8 @@ import com.google.common.collect.ImmutableMap;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlock;
+import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
+import com.simibubi.create.content.kinetics.base.DirectionalAxisKineticBlock;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.BlockStateGen;
 import com.tterrag.registrate.providers.DataGenContext;
@@ -58,6 +60,53 @@ public class ModBlockStateGen {
     private static <T extends Block> Function<BlockState, ModelFile> getBlockModel(boolean customItem,
                                                                                    DataGenContext<Block, T> c, RegistrateBlockstateProvider p) {
         return $ -> customItem ? AssetLookup.partialBaseModel(c, p) : AssetLookup.standardModel(c, p);
+    }
+
+    public static <T extends DirectionalAxisKineticBlock> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> fluidValve(DyeColor color) {
+        return (c, p) -> {
+            String parentPath = "block/fluid_valve";
+            String path = "block/" + c.getName();
+
+            // Textures
+            String colorName = color.getSerializedName();
+            String valveTexture = "block/" + colorName + "_fluid_valve";
+            String valveClosed = "block/" + colorName + "_valve_closed";
+            String valveOpen = "block/" + colorName + "_valve_open";
+            String copperTexture = "block/" + colorName + "_copper_underside";
+
+            p.models().withExistingParent(path + "/block_horizontal_closed", Create.asResource(parentPath + "/block_horizontal_closed"))
+                    .texture("2", valveTexture)
+                    .texture("3", valveClosed)
+                    .texture("particle", copperTexture);
+
+            p.models().withExistingParent(path + "/block_horizontal_open", Create.asResource(parentPath + "/block_horizontal_open"))
+                    .texture("2", valveTexture)
+                    .texture("3", valveOpen)
+                    .texture("particle", copperTexture);
+
+            p.models().withExistingParent(path + "/block_vertical_closed", Create.asResource(parentPath + "/block_vertical_closed"))
+                    .texture("2", valveTexture)
+                    .texture("4", valveClosed)
+                    .texture("particle", copperTexture);
+
+            p.models().withExistingParent(path + "/block_vertical_open", Create.asResource(parentPath + "/block_vertical_open"))
+                    .texture("2", valveTexture)
+                    .texture("4", valveOpen)
+                    .texture("particle", copperTexture);
+
+            p.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
+                    .texture("2", valveTexture)
+                    .texture("4", valveOpen)
+                    .texture("particle", valveClosed);
+
+            p.models().withExistingParent(path + "/pointer", Create.asResource(parentPath + "/pointer"))
+                    .texture("2", valveTexture)
+                    .texture("particle", copperTexture);
+
+            BlockStateGen.directionalAxisBlock(c, p, (state, vertical) ->
+                    AssetLookup.partialBaseModel(c, p, vertical ? "vertical" : "horizontal",
+                            state.getValue(FluidValveBlock.ENABLED) ? "open" : "closed"));
+        };
     }
 
     public static <P extends EncasedPipeBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> encasedPipe(DyeColor color) {

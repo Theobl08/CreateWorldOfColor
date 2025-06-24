@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/fluid_valve/block_vertical_closed",
+  "textures": {
+    "2": "createworldofcolor:block/brown_fluid_valve",
+    "4": "createworldofcolor:block/brown_valve_closed",
+    "particle": "createworldofcolor:block/brown_copper_underside"
+  }
+}

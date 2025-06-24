@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/fluid_valve/block_horizontal_closed",
+  "textures": {
+    "2": "createworldofcolor:block/lime_fluid_valve",
+    "3": "createworldofcolor:block/lime_valve_closed",
+    "particle": "createworldofcolor:block/lime_copper_underside"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/smart_fluid_pipe/block",
+  "textures": {
+    "2": "createworldofcolor:block/red_smart_pipe_1",
+    "3": "createworldofcolor:block/red_smart_pipe_2",
+    "4": "createworldofcolor:block/red_pipes",
+    "particle": "createworldofcolor:block/copper/red_copper_roof_top"
+  }
+}

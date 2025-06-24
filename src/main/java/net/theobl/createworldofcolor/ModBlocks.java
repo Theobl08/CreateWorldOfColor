@@ -10,16 +10,13 @@ import com.simibubi.create.content.decoration.RoofBlockCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.decoration.slidingDoor.SlidingDoorBlock;
-import com.simibubi.create.content.fluids.PipeAttachmentModel;
-import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
-import com.simibubi.create.content.fluids.pipes.FluidPipeBlock;
-import com.simibubi.create.content.fluids.pipes.GlassFluidPipeBlock;
+import com.simibubi.create.content.fluids.pipes.*;
+import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
 import com.simibubi.create.content.fluids.pump.PumpBlock;
 import com.simibubi.create.content.fluids.tank.*;
 import com.simibubi.create.foundation.block.CopperBlockSet;
 import com.simibubi.create.foundation.block.DyedBlockList;
 import com.simibubi.create.foundation.data.AssetLookup;
-import com.simibubi.create.foundation.data.BlockStateGen;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.item.ItemDescription;
@@ -58,6 +55,7 @@ import net.theobl.createworldofcolor.fluids.ColoredPipeAttachmentModel;
 import net.theobl.createworldofcolor.fluids.pipes.ColoredEncasedPipeBlock;
 import net.theobl.createworldofcolor.fluids.pipes.ColoredFluidPipeBlock;
 import net.theobl.createworldofcolor.fluids.pipes.ColoredGlassFluidPipeBlock;
+import net.theobl.createworldofcolor.fluids.pipes.ModSmartFluidPipeGenerator;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankBlock;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankItem;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankModel;
@@ -156,6 +154,32 @@ public class ModBlocks {
                 .blockstate(ModBlockStateGen.pump(color))
                 .onRegister(blockModel(() -> ColoredPipeAttachmentModel::withAO, color))
                 .transform(ModCStress.setImpact(4.0))
+                .item()
+                .transform(customItemModel())
+                .register();
+    });
+
+    public static final DyedBlockList<SmartFluidPipeBlock> SMART_FLUID_PIPES = new DyedBlockList<>( color -> {
+        String colorName = color.getSerializedName();
+        return REGISTRATE.block(colorName + "_smart_fluid_pipe", SmartFluidPipeBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
+                .transform(pickaxeOnly())
+                .blockstate(new ModSmartFluidPipeGenerator(colorName + "_")::generate)
+                .onRegister(blockModel(() -> ColoredPipeAttachmentModel::withAO, color))
+                .item()
+                .transform(customItemModel())
+                .register();
+    });
+
+    public static final DyedBlockList<FluidValveBlock> FLUID_VALVE = new DyedBlockList<>(color -> {
+        String colorName = color.getSerializedName();
+        return REGISTRATE.block(colorName + "_fluid_valve", FluidValveBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .transform(pickaxeOnly())
+                .addLayer(() -> RenderType::cutoutMipped)
+                .blockstate(ModBlockStateGen.fluidValve(color))
+                .onRegister(blockModel(() -> ColoredPipeAttachmentModel::withAO, color))
                 .item()
                 .transform(customItemModel())
                 .register();

@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/fluid_valve/pointer",
+  "textures": {
+    "2": "createworldofcolor:block/white_fluid_valve",
+    "particle": "createworldofcolor:block/white_copper_underside"
+  }
+}
