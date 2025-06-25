@@ -8,6 +8,11 @@ import net.minecraft.world.level.block.Block;
 import net.theobl.createworldofcolor.ModTags;
 
 public class ModTagsProvider {
+    public static void genBlockTags(RegistrateTagsProvider<Block> provIn) {
+        TagGen.CreateTagsProvider<Block> prov = new TagGen.CreateTagsProvider<>(provIn, Block::builtInRegistryHolder);
+
+        prov.tag(ModTags.Blocks.FLUID_TANKS.tag).add(AllBlocks.FLUID_TANK.get(), AllBlocks.CREATIVE_FLUID_TANK.get());
+    }
 
     public static void genItemTags(RegistrateTagsProvider<Item> provIn) {
         TagGen.CreateTagsProvider<Item> prov = new TagGen.CreateTagsProvider<>(provIn, Item::builtInRegistryHolder);

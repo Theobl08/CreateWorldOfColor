@@ -1,0 +1,22 @@
+{
+  "values": [
+    "createworldofcolor:white_fluid_tank",
+    "createworldofcolor:orange_fluid_tank",
+    "createworldofcolor:magenta_fluid_tank",
+    "createworldofcolor:light_blue_fluid_tank",
+    "createworldofcolor:yellow_fluid_tank",
+    "createworldofcolor:lime_fluid_tank",
+    "createworldofcolor:pink_fluid_tank",
+    "createworldofcolor:gray_fluid_tank",
+    "createworldofcolor:light_gray_fluid_tank",
+    "createworldofcolor:cyan_fluid_tank",
+    "createworldofcolor:purple_fluid_tank",
+    "createworldofcolor:blue_fluid_tank",
+    "createworldofcolor:brown_fluid_tank",
+    "createworldofcolor:green_fluid_tank",
+    "createworldofcolor:red_fluid_tank",
+    "createworldofcolor:black_fluid_tank",
+    "create:fluid_tank",
+    "create:creative_fluid_tank"
+  ]
+}

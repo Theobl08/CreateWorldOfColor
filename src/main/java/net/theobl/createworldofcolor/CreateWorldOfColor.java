@@ -86,6 +86,7 @@ public class CreateWorldOfColor {
 
     public void gatherRegistrateData(GatherDataEvent event) {
         REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, ModTagsProvider::genItemTags);
+        REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, ModTagsProvider::genBlockTags);
     }
 
     public void gatherData(GatherDataEvent event) {

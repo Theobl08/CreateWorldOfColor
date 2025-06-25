@@ -3,9 +3,11 @@ package net.theobl.createworldofcolor;
 import net.createmod.catnip.lang.Lang;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 import static com.simibubi.create.AllTags.optionalTag;
 
@@ -27,6 +29,39 @@ public class ModTags {
             this.id = id;
             this.optionalDefault = optionalDefault;
             this.alwaysDatagenDefault = alwaysDatagenDefault;
+        }
+    }
+
+    public enum Blocks {
+        FLUID_TANKS;
+
+        public final TagKey<Block> tag;
+        public final boolean alwaysDatagen;
+
+        Blocks() {
+            this(Mods.MOD);
+        }
+
+        Blocks(Mods namespace) {
+            this(namespace, namespace.optionalDefault, namespace.alwaysDatagenDefault);
+        }
+
+        Blocks(Mods namespace, String path) {
+            this(namespace, path, namespace.optionalDefault, namespace.alwaysDatagenDefault);
+        }
+
+        Blocks(Mods namespace, boolean optional, boolean alwaysDatagen) {
+            this(namespace, null, optional, alwaysDatagen);
+        }
+
+        Blocks(Mods namespace, String path, boolean optional, boolean alwaysDatagen) {
+            ResourceLocation id = ResourceLocation.fromNamespaceAndPath(namespace.id, path == null ? Lang.asId(name()) : path);
+            if (optional) {
+                tag = optionalTag(BuiltInRegistries.BLOCK, id);
+            } else {
+                tag = BlockTags.create(id);
+            }
+            this.alwaysDatagen = alwaysDatagen;
         }
     }
 

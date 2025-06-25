@@ -200,6 +200,7 @@ public class ModBlocks {
                         .isRedstoneConductor((p1, p2, p3) -> true))
                 .transform(pickaxeOnly())
                 .blockstate(new ModFluidTankGenerator(colorName + "_")::generate)
+                .tag(ModTags.Blocks.FLUID_TANKS.tag)
                 .onRegister(blockModel(() -> ColoredFluidTankModel::standard, color))
                 .transform(displaySource(AllDisplaySources.BOILER))
                 .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
