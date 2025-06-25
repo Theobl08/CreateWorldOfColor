@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/spout/item",
+  "textures": {
+    "0": "createworldofcolor:block/blue_spout",
+    "3": "createworldofcolor:block/blue_spout_nozzle",
+    "4": "createworldofcolor:block/encased_blue_pipe",
+    "particle": "createworldofcolor:block/blue_copper_underside"
+  }
+}

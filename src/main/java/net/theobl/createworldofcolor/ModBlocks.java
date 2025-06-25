@@ -14,7 +14,9 @@ import com.simibubi.create.content.fluids.drain.ItemDrainBlock;
 import com.simibubi.create.content.fluids.pipes.*;
 import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
 import com.simibubi.create.content.fluids.pump.PumpBlock;
+import com.simibubi.create.content.fluids.spout.SpoutBlock;
 import com.simibubi.create.content.fluids.tank.*;
+import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.block.CopperBlockSet;
 import com.simibubi.create.foundation.block.DyedBlockList;
 import com.simibubi.create.foundation.data.AssetLookup;
@@ -219,6 +221,46 @@ public class ModBlocks {
                     p.simpleBlock(c.get(), AssetLookup.standardModel(c, p));
                 })
                 .simpleItem()
+                .register();
+    });
+
+    public static final DyedBlockList<SpoutBlock> SPOUTS = new DyedBlockList<>(color -> {
+        String colorName = color.getSerializedName();
+        return REGISTRATE.block(colorName + "_spout", SpoutBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .transform(pickaxeOnly())
+                .blockstate((ctx, prov) -> {
+                    String path = "block/" + ctx.getName();
+                    String parentPath = "block/spout";
+
+                    String encasedPipe = "block/encased_" + colorName +"_pipe";
+                    String copperUnderside = "block/" + colorName +"_copper_underside";
+                    String spout = "block/" + colorName + "_spout";
+                    String spoutNozzle = "block/" + colorName + "_spout_nozzle";
+
+                    prov.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
+                            .texture("0", spout)
+                            .texture("3", encasedPipe)
+                            .texture("particle", copperUnderside);
+                    prov.models().withExistingParent(path + "/bottom", Create.asResource(parentPath + "/bottom"))
+                            .texture("2", spoutNozzle);
+                    prov.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
+                            .texture("0", spout)
+                            .texture("3", spoutNozzle)
+                            .texture("4", encasedPipe)
+                            .texture("particle", copperUnderside);
+                    prov.models().withExistingParent(path + "/middle", Create.asResource(parentPath + "/middle"))
+                            .texture("0", spoutNozzle)
+                            .texture("particle", spoutNozzle);
+                    prov.models().withExistingParent(path + "/top", Create.asResource(parentPath + "/top"))
+                            .texture("0", spoutNozzle)
+                            .texture("particle", spoutNozzle);
+
+                    prov.simpleBlock(ctx.getEntry(), AssetLookup.partialBaseModel(ctx, prov));
+                })
+                .addLayer(() -> RenderType::cutoutMipped)
+                .item(AssemblyOperatorBlockItem::new)
+                .transform(customItemModel())
                 .register();
     });
 

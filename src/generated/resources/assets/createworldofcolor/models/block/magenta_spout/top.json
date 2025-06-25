@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/spout/top",
+  "textures": {
+    "0": "createworldofcolor:block/magenta_spout_nozzle",
+    "particle": "createworldofcolor:block/magenta_spout_nozzle"
+  }
+}

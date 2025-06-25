@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/spout/block",
+  "textures": {
+    "0": "createworldofcolor:block/orange_spout",
+    "3": "createworldofcolor:block/encased_orange_pipe",
+    "particle": "createworldofcolor:block/orange_copper_underside"
+  }
+}

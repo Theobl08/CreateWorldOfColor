@@ -14,18 +14,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.simibubi.create.AllPartialModels.FOLDING_DOORS;
+import static com.simibubi.create.AllPartialModels.SPOUT_MIDDLE;
 
 public class ModPartialModels {
     //Create casings map
     public static final Map<DyeColor, PartialModel> COLORED_FLUID_PIPE_CASINGS = new EnumMap<>(DyeColor.class);
     //Create attachment map
     public static final Map<ComponentPartials, Map<DyeColor, Map<Direction, PartialModel>>> COLORED_PIPE_ATTACHMENTS = new EnumMap<>(ComponentPartials.class);
+
+    public static final Map<DyeColor, PartialModel> COLORED_SPOUT_TOP = new EnumMap<>(DyeColor.class),
+            COLORED_SPOUT_MIDDLE = new EnumMap<>(DyeColor.class),
+            COLORED_SPOUT_BOTTOM = new EnumMap<>(DyeColor.class);
+
     static {
         for(DyeColor color : DyeColor.values()) {
             String id = color.getSerializedName();
             putFoldingDoor(id + "_door");
 
             COLORED_FLUID_PIPE_CASINGS.put(color, block(color.getName() + "_fluid_pipe/casing"));
+
+            COLORED_SPOUT_TOP.put(color, block(color.getName() + "_spout/top"));
+            COLORED_SPOUT_MIDDLE.put(color, block(color.getName() + "_spout/middle"));
+            COLORED_SPOUT_BOTTOM.put(color, block(color.getName() + "_spout/bottom"));
         }
 
         for (ComponentPartials type : ComponentPartials.values()) {
