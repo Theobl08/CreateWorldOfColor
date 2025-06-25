@@ -57,6 +57,37 @@ public class ModBlockStateGen {
         };
     }
 
+    public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> hosePulley(DyeColor color,
+            boolean customItem) {
+        return (c, p) -> {
+            String colorName = color.getSerializedName();
+            String path = "block/" + c.getName();
+            String parentPath = "block/hose_pulley";
+
+            String tankInner = "block/" + colorName + "_fluid_tank_inner";
+            String pump = "block/" + colorName + "_pump";
+            String hosePulley = "block/" + colorName + "_hose_pulley";
+
+            p.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
+                    .texture("1", hosePulley)
+                    .texture("3", pump)
+                    .texture("particle", tankInner);
+//            p.models().withExistingParent(path + "/hose_coil", parentPath + "/hose_coil");
+            p.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
+                    .texture("1", hosePulley)
+                    .texture("3", pump)
+                    .texture("particle", tankInner);
+            p.models().withExistingParent(path + "/pulley_magnet", Create.asResource(parentPath + "/pulley_magnet"))
+                    .texture("particle", tankInner);
+//            p.models().withExistingParent(path + "/rope", parentPath + "/rope");
+//            p.models().withExistingParent(path + "/rope_half", parentPath + "/rope_half");
+            p.models().withExistingParent(path + "/rope_half_magnet", Create.asResource(parentPath + "/rope_half_magnet"))
+                    .texture("particle", tankInner);
+
+            p.horizontalBlock(c.get(), getBlockModel(customItem, c, p));
+        };
+    }
+
     private static <T extends Block> Function<BlockState, ModelFile> getBlockModel(boolean customItem,
                                                                                    DataGenContext<Block, T> c, RegistrateBlockstateProvider p) {
         return $ -> customItem ? AssetLookup.partialBaseModel(c, p) : AssetLookup.standardModel(c, p);

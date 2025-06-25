@@ -1,0 +1,6 @@
+{
+  "parent": "create:block/hose_pulley/rope_half_magnet",
+  "textures": {
+    "particle": "createworldofcolor:block/purple_fluid_tank_inner"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/hose_pulley/block",
+  "textures": {
+    "1": "createworldofcolor:block/white_hose_pulley",
+    "3": "createworldofcolor:block/white_pump",
+    "particle": "createworldofcolor:block/white_fluid_tank_inner"
+  }
+}

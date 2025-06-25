@@ -12,6 +12,7 @@ import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.decoration.slidingDoor.SlidingDoorBlock;
 import com.simibubi.create.content.fluids.drain.ItemDrainBlock;
+import com.simibubi.create.content.fluids.hosePulley.HosePulleyBlock;
 import com.simibubi.create.content.fluids.pipes.*;
 import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
 import com.simibubi.create.content.fluids.pump.PumpBlock;
@@ -45,6 +46,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WeatheringCopper;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.api.distmarker.Dist;
@@ -206,6 +208,20 @@ public class ModBlocks {
                 .item(ColoredFluidTankItem::new)
                 .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
                 .build()
+                .register();
+    });
+
+    public static final DyedBlockList<HosePulleyBlock> HOSE_PULLEYS = new DyedBlockList<>(color -> {
+        String colorName = color.getSerializedName();
+        return REGISTRATE.block(colorName + "_hose_pulley", HosePulleyBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .properties(BlockBehaviour.Properties::noOcclusion)
+                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(pickaxeOnly())
+                .blockstate(ModBlockStateGen.hosePulley(color, true))
+                .transform(ModCStress.setImpact(4.0))
+                .item()
+                .transform(customItemModel())
                 .register();
     });
 

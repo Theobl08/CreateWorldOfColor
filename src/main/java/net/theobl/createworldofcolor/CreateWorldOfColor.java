@@ -81,6 +81,7 @@ public class CreateWorldOfColor {
         ModBlocks.ITEM_DRAINS.forEach(block -> event.modify(AllBlockEntityTypes.ITEM_DRAIN.get(), block.get()));
         ModBlocks.SPOUTS.forEach(block -> event.modify(AllBlockEntityTypes.SPOUT.get(), block.get()));
         ModBlocks.PORTABLE_FLUID_INTERFACES.forEach(block -> event.modify(AllBlockEntityTypes.PORTABLE_FLUID_INTERFACE.get(), block.get()));
+        ModBlocks.HOSE_PULLEYS.forEach(block -> event.modify(AllBlockEntityTypes.HOSE_PULLEY.get(), block.get()));
     }
 
     public void gatherRegistrateData(GatherDataEvent event) {
