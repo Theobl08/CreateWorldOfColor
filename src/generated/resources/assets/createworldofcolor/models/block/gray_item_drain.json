@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/item_drain",
+  "textures": {
+    "0": "createworldofcolor:block/gray_item_drain_side",
+    "3": "createworldofcolor:block/gray_pump",
+    "4": "createworldofcolor:block/gray_copper_underside"
+  }
+}

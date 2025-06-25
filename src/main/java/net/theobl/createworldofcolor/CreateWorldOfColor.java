@@ -78,6 +78,7 @@ public class CreateWorldOfColor {
         ModBlocks.MECHANICAL_PUMPS.forEach(block -> event.modify(AllBlockEntityTypes.MECHANICAL_PUMP.get(), block.get()));
         ModBlocks.SMART_FLUID_PIPES.forEach(block -> event.modify(AllBlockEntityTypes.SMART_FLUID_PIPE.get(), block.get()));
         ModBlocks.FLUID_VALVE.forEach(block -> event.modify(AllBlockEntityTypes.FLUID_VALVE.get(), block.get()));
+        ModBlocks.ITEM_DRAINS.forEach(block -> event.modify(AllBlockEntityTypes.ITEM_DRAIN.get(), block.get()));
     }
 
     public void gatherRegistrateData(GatherDataEvent event) {

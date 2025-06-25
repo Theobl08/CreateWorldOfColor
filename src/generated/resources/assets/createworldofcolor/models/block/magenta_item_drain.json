@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/item_drain",
+  "textures": {
+    "0": "createworldofcolor:block/magenta_item_drain_side",
+    "3": "createworldofcolor:block/magenta_pump",
+    "4": "createworldofcolor:block/magenta_copper_underside"
+  }
+}

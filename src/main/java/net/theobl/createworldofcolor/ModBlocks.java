@@ -10,6 +10,7 @@ import com.simibubi.create.content.decoration.RoofBlockCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.decoration.slidingDoor.SlidingDoorBlock;
+import com.simibubi.create.content.fluids.drain.ItemDrainBlock;
 import com.simibubi.create.content.fluids.pipes.*;
 import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
 import com.simibubi.create.content.fluids.pump.PumpBlock;
@@ -201,6 +202,23 @@ public class ModBlocks {
                 .item(ColoredFluidTankItem::new)
                 .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
                 .build()
+                .register();
+    });
+
+    public static final DyedBlockList<ItemDrainBlock> ITEM_DRAINS = new DyedBlockList<>(color -> {
+        String colorName = color.getSerializedName();
+        return  REGISTRATE.block(colorName + "_item_drain", ItemDrainBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .transform(pickaxeOnly())
+                .addLayer(() -> RenderType::cutoutMipped)
+                .blockstate((c, p) -> {
+                    p.models().withExistingParent(c.getName(), Create.asResource("block/item_drain"))
+                            .texture("0", "block/" + c.getName() + "_side")
+                            .texture("3", "block/" + colorName + "_pump")
+                            .texture("4", "block/" + colorName + "_copper_underside");
+                    p.simpleBlock(c.get(), AssetLookup.standardModel(c, p));
+                })
+                .simpleItem()
                 .register();
     });
 
