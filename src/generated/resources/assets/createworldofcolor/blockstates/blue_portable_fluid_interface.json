@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "createworldofcolor:block/blue_portable_fluid_interface/block",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "createworldofcolor:block/blue_portable_fluid_interface/block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "createworldofcolor:block/blue_portable_fluid_interface/block",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "createworldofcolor:block/blue_portable_fluid_interface/block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "createworldofcolor:block/blue_portable_fluid_interface/block"
+    },
+    "facing=west": {
+      "model": "createworldofcolor:block/blue_portable_fluid_interface/block",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

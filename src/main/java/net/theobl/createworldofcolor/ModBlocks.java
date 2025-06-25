@@ -1,6 +1,7 @@
 package net.theobl.createworldofcolor;
 
 import com.simibubi.create.*;
+import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceBlock;
 import com.simibubi.create.content.contraptions.actors.seat.SeatBlock;
 import com.simibubi.create.content.contraptions.actors.seat.SeatInteractionBehaviour;
 import com.simibubi.create.content.contraptions.actors.seat.SeatMovementBehaviour;
@@ -51,6 +52,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.theobl.createworldofcolor.block.ColoredCopperBlockSet;
 import net.theobl.createworldofcolor.config.ModCStress;
+import net.theobl.createworldofcolor.contraptions.actors.psi.ColoredPortableStorageInterfaceMovement;
 import net.theobl.createworldofcolor.data.MetalBars;
 import net.theobl.createworldofcolor.data.ModBlockStateGen;
 import net.theobl.createworldofcolor.data.ModBuilderTransformers;
@@ -260,6 +262,43 @@ public class ModBlocks {
                 })
                 .addLayer(() -> RenderType::cutoutMipped)
                 .item(AssemblyOperatorBlockItem::new)
+                .transform(customItemModel())
+                .register();
+    });
+
+    public static final DyedBlockList<PortableStorageInterfaceBlock> PORTABLE_FLUID_INTERFACES = new DyedBlockList<>(color -> {
+        String colorName = color.getSerializedName();
+        return REGISTRATE.block(colorName + "_portable_fluid_interface", PortableStorageInterfaceBlock::forFluids)
+                .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.mapColor(color))
+                .transform(axeOrPickaxe())
+                .blockstate((c, p) -> {
+                    String path = "block/" + c.getName();
+                    String parentPath = "block/portable_fluid_interface";
+
+                    String copperUnderside = "block/" + colorName + "_copper_underside";
+                    String portableFluidInterface = "block/" + colorName + "_portable_fluid_interface";
+
+                    p.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
+                            .texture("0", portableFluidInterface)
+                            .texture("2", copperUnderside)
+                            .texture("particle", copperUnderside);
+                    p.models().withExistingParent(path + "/block_middle", Create.asResource(parentPath + "/block_middle"))
+                            .texture("particle", copperUnderside);
+                    p.models().withExistingParent(path + "/block_middle_powered", Create.asResource(parentPath + "/block_middle_powered"))
+                            .texture("particle", copperUnderside);
+                    p.models().withExistingParent(path + "/block_top", Create.asResource(parentPath + "/block_top"))
+                            .texture("particle", copperUnderside);
+                    p.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
+                            .texture("0", portableFluidInterface)
+                            .texture("2", copperUnderside)
+                            .texture("particle", copperUnderside);
+
+                    p.directionalBlock(c.get(), AssetLookup.partialBaseModel(c, p));
+                })
+                .onRegister(movementBehaviour(new ColoredPortableStorageInterfaceMovement()))
+                .item()
+                .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
                 .transform(customItemModel())
                 .register();
     });

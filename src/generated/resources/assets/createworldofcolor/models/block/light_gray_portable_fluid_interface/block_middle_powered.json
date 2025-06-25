@@ -1,0 +1,6 @@
+{
+  "parent": "create:block/portable_fluid_interface/block_middle_powered",
+  "textures": {
+    "particle": "createworldofcolor:block/light_gray_copper_underside"
+  }
+}
