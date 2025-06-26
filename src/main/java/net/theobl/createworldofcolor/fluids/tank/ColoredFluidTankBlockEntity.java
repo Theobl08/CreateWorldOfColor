@@ -21,6 +21,7 @@ import net.theobl.createworldofcolor.connectivity.ModConnectivityHandler;
 public class ColoredFluidTankBlockEntity extends FluidTankBlockEntity implements IMultiBlockEntityContainerExtension {
     public ColoredFluidTankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+        boiler = new ModBoilerData();
     }
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {

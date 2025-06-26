@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/steam_engine/block",
+  "textures": {
+    "1": "createworldofcolor:block/cyan_engine",
+    "particle": "createworldofcolor:block/cyan_copper_underside"
+  }
+}

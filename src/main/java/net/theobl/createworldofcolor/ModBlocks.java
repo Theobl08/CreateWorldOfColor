@@ -1,6 +1,7 @@
 package net.theobl.createworldofcolor;
 
 import com.simibubi.create.*;
+import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceBlock;
 import com.simibubi.create.content.contraptions.actors.seat.SeatBlock;
 import com.simibubi.create.content.contraptions.actors.seat.SeatInteractionBehaviour;
@@ -18,6 +19,7 @@ import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
 import com.simibubi.create.content.fluids.pump.PumpBlock;
 import com.simibubi.create.content.fluids.spout.SpoutBlock;
 import com.simibubi.create.content.fluids.tank.*;
+import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.block.CopperBlockSet;
 import com.simibubi.create.foundation.block.DyedBlockList;
@@ -67,6 +69,7 @@ import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankBlock;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankItem;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankModel;
 import net.theobl.createworldofcolor.fluids.tank.ModFluidTankGenerator;
+import net.theobl.createworldofcolor.kinetics.steamEngine.ColoredSteamEngineBlock;
 
 import java.util.function.Supplier;
 
@@ -316,6 +319,33 @@ public class ModBlocks {
                 .onRegister(movementBehaviour(new ColoredPortableStorageInterfaceMovement()))
                 .item()
                 .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
+                .transform(customItemModel())
+                .register();
+    });
+
+    public static final DyedBlockList<SteamEngineBlock> STEAM_ENGINES = new DyedBlockList<>(color -> {
+        String colorName = color.getSerializedName();
+        return REGISTRATE.block(colorName + "_steam_engine", p -> new ColoredSteamEngineBlock(p, color))
+                .initialProperties(SharedProperties::copperMetal)
+                .transform(pickaxeOnly())
+                .blockstate((c, p) -> {
+                    String path = "block/" + c.getName();
+                    String parentPath = "block/steam_engine";
+
+                    String copperUnderside = "block/" + colorName + "_copper_underside";
+                    String engine = "block/" + colorName + "_engine";
+
+                    p.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
+                            .texture("1", engine)
+                            .texture("particle", copperUnderside);
+                    p.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
+                            .texture("1", engine)
+                            .texture("particle", copperUnderside);
+                    p.horizontalFaceBlock(c.get(), AssetLookup.partialBaseModel(c, p));
+                })
+                .transform(ModCStress.setCapacity(1024.0))
+                .onRegister(BlockStressValues.setGeneratorSpeed(64, true))
+                .item()
                 .transform(customItemModel())
                 .register();
     });

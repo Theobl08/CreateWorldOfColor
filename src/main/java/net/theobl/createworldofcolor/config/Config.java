@@ -69,7 +69,7 @@ public class Config {
 
         ModCStress stress = server().kinetics.stressValues;
         BlockStressValues.IMPACTS.registerProvider(stress::getImpact);
-//        BlockStressValues.CAPACITIES.registerProvider(stress::getCapacity);
+        BlockStressValues.CAPACITIES.registerProvider(stress::getCapacity);
     }
 
     @SubscribeEvent

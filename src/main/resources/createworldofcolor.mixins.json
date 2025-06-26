@@ -5,8 +5,10 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "createworldofcolor.refmap.json",
   "mixins": [
+    "BoilerDataMixin",
     "FluidPropagatorMixin",
-    "PortableStorageInterfaceBlockEntityAccessor"
+    "PortableStorageInterfaceBlockEntityAccessor",
+    "SteamEngineBlockEntityMixin"
   ],
   "client": [
   ],

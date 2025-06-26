@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/steam_engine/item",
+  "textures": {
+    "1": "createworldofcolor:block/lime_engine",
+    "particle": "createworldofcolor:block/lime_copper_underside"
+  }
+}
