@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/steam_whistle/block_medium_floor",
+  "textures": {
+    "1": "createworldofcolor:block/lime_engine",
+    "2": "createworldofcolor:block/lime_copper_redstone_plate"
+  }
+}

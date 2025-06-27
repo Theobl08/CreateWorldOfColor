@@ -1,0 +1,6 @@
+{
+  "parent": "createworldofcolor:block/white_steam_whistle/block_large_floor",
+  "textures": {
+    "2": "create:block/copper_redstone_plate_powered"
+  }
+}

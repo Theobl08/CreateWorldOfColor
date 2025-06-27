@@ -38,7 +38,7 @@ public class ModBoilerData extends BoilerData {
                         if ((AllBlocks.STEAM_ENGINE.has(attachedState) || ModBlocks.STEAM_ENGINES.get(coloredTank.getColor()).has(attachedState)) &&
                                 SteamEngineBlock.getFacing(attachedState) == d)
                             attachedEngines++;
-                        if (AllBlocks.STEAM_WHISTLE.has(attachedState)
+                        if ((AllBlocks.STEAM_WHISTLE.has(attachedState) || ModBlocks.STEAM_WHISTLES.get(coloredTank.getColor()).has(attachedState))
                                 && WhistleBlock.getAttachedDirection(attachedState)
                                 .getOpposite() == d)
                             attachedWhistles++;

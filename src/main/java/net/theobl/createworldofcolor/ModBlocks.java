@@ -12,6 +12,7 @@ import com.simibubi.create.content.decoration.RoofBlockCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.decoration.slidingDoor.SlidingDoorBlock;
+import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
 import com.simibubi.create.content.fluids.drain.ItemDrainBlock;
 import com.simibubi.create.content.fluids.hosePulley.HosePulleyBlock;
 import com.simibubi.create.content.fluids.pipes.*;
@@ -60,6 +61,8 @@ import net.theobl.createworldofcolor.contraptions.actors.psi.ColoredPortableStor
 import net.theobl.createworldofcolor.data.MetalBars;
 import net.theobl.createworldofcolor.data.ModBlockStateGen;
 import net.theobl.createworldofcolor.data.ModBuilderTransformers;
+import net.theobl.createworldofcolor.decoration.steamWhistle.ColoredWhistleBlock;
+import net.theobl.createworldofcolor.decoration.steamWhistle.ModWhistleGenerator;
 import net.theobl.createworldofcolor.fluids.ColoredPipeAttachmentModel;
 import net.theobl.createworldofcolor.fluids.pipes.ColoredEncasedPipeBlock;
 import net.theobl.createworldofcolor.fluids.pipes.ColoredFluidPipeBlock;
@@ -345,6 +348,18 @@ public class ModBlocks {
                 })
                 .transform(ModCStress.setCapacity(1024.0))
                 .onRegister(BlockStressValues.setGeneratorSpeed(64, true))
+                .item()
+                .transform(customItemModel())
+                .register();
+    });
+
+    public static final DyedBlockList<WhistleBlock> STEAM_WHISTLES = new DyedBlockList<>(color -> {
+        String colorName = color.getSerializedName();
+        return REGISTRATE.block(colorName + "_steam_whistle", p -> new ColoredWhistleBlock(p, color))
+                .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.mapColor(MapColor.GOLD))
+                .transform(pickaxeOnly())
+                .blockstate(new ModWhistleGenerator(colorName + "_")::generate)
                 .item()
                 .transform(customItemModel())
                 .register();

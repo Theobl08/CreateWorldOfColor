@@ -1,37 +1,57 @@
 package net.theobl.createworldofcolor.mixin;
 
-import com.llamalad7.mixinextras.sugar.Local;
-import com.simibubi.create.AllBlocks;
+import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
 import com.simibubi.create.content.fluids.tank.BoilerData;
+import com.simibubi.create.content.fluids.tank.FluidTankBlock;
+import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
-import com.tterrag.registrate.util.entry.BlockEntry;
+import net.createmod.catnip.data.Iterate;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.theobl.createworldofcolor.ModBlocks;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(BoilerData.class)
 public class BoilerDataMixin {
-    @Redirect(method = "evaluate", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z", ordinal = 0))
-    private boolean evaluate(BlockEntry<SteamEngineBlock> instance, BlockState state, @Local(ordinal = 1) BlockState blockState) {
-        return (AllBlocks.STEAM_ENGINE.has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.BLACK).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.BLUE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.BROWN).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.CYAN).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.GRAY).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.GREEN).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.LIGHT_BLUE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.LIGHT_GRAY).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.LIME).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.MAGENTA).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.ORANGE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.PINK).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.PURPLE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.RED).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.WHITE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.YELLOW).has(blockState));
+    @Shadow
+    public int attachedEngines;
+    @Shadow
+    public int attachedWhistles;
+
+    @Inject(method = "evaluate", at = @At("RETURN"))
+    private void evaluate(FluidTankBlockEntity controller, CallbackInfoReturnable<Boolean> cir) {
+        BlockPos controllerPos = controller.getBlockPos();
+        Level level = controller.getLevel();
+
+        for (int yOffset = 0; yOffset < controller.getHeight(); yOffset++) {
+            for (int xOffset = 0; xOffset < controller.getWidth(); xOffset++) {
+                for (int zOffset = 0; zOffset < controller.getWidth(); zOffset++) {
+
+                    BlockPos pos = controllerPos.offset(xOffset, yOffset, zOffset);
+                    BlockState blockState = level.getBlockState(pos);
+                    if (!FluidTankBlock.isTank(blockState))
+                        continue;
+                    for (Direction d : Iterate.directions) {
+                        BlockPos attachedPos = pos.relative(d);
+                        BlockState attachedState = level.getBlockState(attachedPos);
+                        for (DyeColor color : DyeColor.values()) {
+                            if (ModBlocks.STEAM_ENGINES.get(color).has(attachedState) && SteamEngineBlock.getFacing(attachedState) == d)
+                                attachedEngines++;
+                            if (ModBlocks.STEAM_WHISTLES.get(color).has(attachedState)
+                                    && WhistleBlock.getAttachedDirection(attachedState)
+                                    .getOpposite() == d)
+                                attachedWhistles++;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

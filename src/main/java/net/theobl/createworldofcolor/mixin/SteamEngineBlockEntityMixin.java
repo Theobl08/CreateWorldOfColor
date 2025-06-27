@@ -48,8 +48,10 @@ public abstract class SteamEngineBlockEntityMixin extends BlockEntity {
 
     @Inject(method = "isValid", at = @At(value = "RETURN", ordinal = 1), cancellable = true)
     private void isValid(CallbackInfoReturnable<Boolean> cir, @Local Direction dir, @Local Level level) {
-        if (level == null)
+        if (level == null) {
             cir.setReturnValue(false);
+            return;
+        }
 
         cir.setReturnValue(level.getBlockState(((SteamEngineBlockEntity)(Object) this).getBlockPos().relative(dir)).is(ModTags.Blocks.FLUID_TANKS.tag));
     }
