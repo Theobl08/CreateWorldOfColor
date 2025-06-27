@@ -1,12 +1,16 @@
 package net.theobl.createworldofcolor.decoration.steamWhistle;
 
 import com.simibubi.create.Create;
+import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleGenerator;
+import com.simibubi.create.foundation.data.AssetLookup;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.theobl.createworldofcolor.CreateWorldOfColor;
 
 public class ModWhistleGenerator extends WhistleGenerator {
     private final String prefix;
@@ -50,6 +54,16 @@ public class ModWhistleGenerator extends WhistleGenerator {
                 .texture("1", engine)
                 .texture("2", copperRedStonePlate);
 
-        return super.getModel(ctx, prov, state);
+        String wall = state.getValue(WhistleBlock.WALL) ? "wall" : "floor";
+        String size = state.getValue(WhistleBlock.SIZE)
+                .getSerializedName();
+        boolean powered = state.getValue(WhistleBlock.POWERED);
+        ModelFile model = AssetLookup.partialBaseModel(ctx, prov, size, wall);
+        if (!powered)
+            return model;
+        ResourceLocation parentLocation = model.getLocation();
+        return prov.models()
+                .withExistingParent(parentLocation.getPath() + "_powered", parentLocation)
+                .texture("2", CreateWorldOfColor.asResource("block/" + prefix + "copper_redstone_plate_powered"));
     }
 }

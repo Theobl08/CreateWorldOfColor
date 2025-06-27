@@ -1,6 +1,6 @@
 {
   "parent": "createworldofcolor:block/magenta_steam_whistle/block_medium_floor",
   "textures": {
-    "2": "create:block/copper_redstone_plate_powered"
+    "2": "createworldofcolor:block/magenta_copper_redstone_plate_powered"
   }
 }
