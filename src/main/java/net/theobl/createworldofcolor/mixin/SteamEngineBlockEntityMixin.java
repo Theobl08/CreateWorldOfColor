@@ -1,5 +1,6 @@
 package net.theobl.createworldofcolor.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.contraptions.bearing.WindmillBearingBlockEntity;
@@ -10,7 +11,6 @@ import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlockEntity;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.blockEntity.behaviour.scrollValue.ScrollOptionBehaviour;
-import com.tterrag.registrate.util.entry.BlockEntry;
 import net.createmod.catnip.platform.CatnipServices;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,7 +28,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -57,10 +56,9 @@ public abstract class SteamEngineBlockEntityMixin extends BlockEntity {
     }
 
     @OnlyIn(Dist.CLIENT)
-    @Redirect(method = "getTargetAngle", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z"))
-    private boolean getTargetAngle(BlockEntry<SteamEngineBlock> instance, BlockState state, @Local BlockState blockState) {
-        return (AllBlocks.STEAM_ENGINE.has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.BLACK).has(blockState) ||
+    @ModifyExpressionValue(method = "getTargetAngle", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z"))
+    private boolean getTargetAngle(boolean original, @Local(name = "blockState") BlockState blockState) {
+        return original || (ModBlocks.STEAM_ENGINES.get(DyeColor.BLACK).has(blockState) ||
                 ModBlocks.STEAM_ENGINES.get(DyeColor.BLUE).has(blockState) ||
                 ModBlocks.STEAM_ENGINES.get(DyeColor.BROWN).has(blockState) ||
                 ModBlocks.STEAM_ENGINES.get(DyeColor.CYAN).has(blockState) ||
