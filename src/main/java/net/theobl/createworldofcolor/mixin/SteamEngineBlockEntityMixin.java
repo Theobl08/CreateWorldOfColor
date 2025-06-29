@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.theobl.createworldofcolor.ModBlocks;
+import net.theobl.createworldofcolor.ModHelper;
 import net.theobl.createworldofcolor.ModTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -32,41 +33,11 @@ public abstract class SteamEngineBlockEntityMixin {
     @OnlyIn(Dist.CLIENT)
     @ModifyExpressionValue(method = "getTargetAngle", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z"))
     private boolean getTargetAngle(boolean original, @Local(name = "blockState") BlockState blockState) {
-        return original || (ModBlocks.STEAM_ENGINES.get(DyeColor.BLACK).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.BLUE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.BROWN).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.CYAN).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.GRAY).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.GREEN).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.LIGHT_BLUE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.LIGHT_GRAY).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.LIME).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.MAGENTA).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.ORANGE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.PINK).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.PURPLE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.RED).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.WHITE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.YELLOW).has(blockState));
+        return original || ModHelper.isColoredBlock(blockState, ModBlocks.STEAM_ENGINES);
     }
 
     @ModifyExpressionValue(method = "tick", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z"))
     private boolean tick(boolean original, @Local(ordinal = 1) BlockState blockState) {
-        return original || (ModBlocks.STEAM_ENGINES.get(DyeColor.BLACK).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.BLUE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.BROWN).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.CYAN).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.GRAY).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.GREEN).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.LIGHT_BLUE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.LIGHT_GRAY).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.LIME).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.MAGENTA).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.ORANGE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.PINK).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.PURPLE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.RED).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.WHITE).has(blockState) ||
-                ModBlocks.STEAM_ENGINES.get(DyeColor.YELLOW).has(blockState));
+        return original || ModHelper.isColoredBlock(blockState, ModBlocks.STEAM_ENGINES);
     }
 }

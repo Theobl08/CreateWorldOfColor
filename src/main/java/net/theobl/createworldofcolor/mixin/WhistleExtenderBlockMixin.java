@@ -7,6 +7,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.theobl.createworldofcolor.ModBlocks;
+import net.theobl.createworldofcolor.ModHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -36,21 +37,6 @@ public abstract class WhistleExtenderBlockMixin {
     @ModifyExpressionValue(method = "canSurvive", at = @At(value = "INVOKE",
             target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z"))
     private boolean canSurvive(boolean original, @Local(ordinal = 1) BlockState below) {
-            return original || ModBlocks.STEAM_WHISTLES.get(DyeColor.BLACK).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.BLUE).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.BROWN).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.CYAN).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.GRAY).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.GREEN).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.LIGHT_BLUE).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.LIGHT_GRAY).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.LIME).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.MAGENTA).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.ORANGE).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.PINK).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.PURPLE).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.RED).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.WHITE).has(below) ||
-                    ModBlocks.STEAM_WHISTLES.get(DyeColor.YELLOW).has(below);
+            return original || ModHelper.isColoredBlock(below, ModBlocks.STEAM_WHISTLES);
     }
 }
