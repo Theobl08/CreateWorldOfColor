@@ -28,6 +28,7 @@ import net.theobl.createworldofcolor.data.ModDataMapProvider;
 import net.theobl.createworldofcolor.data.ModRecipeProvider;
 import net.theobl.createworldofcolor.data.ModStandardRecipeGen;
 import net.theobl.createworldofcolor.data.ModTagsProvider;
+import net.theobl.createworldofcolor.fluids.spout.ColoredSpoutBlockEntity;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankBlockEntity;
 import org.slf4j.Logger;
 
@@ -79,7 +80,7 @@ public class CreateWorldOfColor {
         ModBlocks.SMART_FLUID_PIPES.forEach(block -> event.modify(AllBlockEntityTypes.SMART_FLUID_PIPE.get(), block.get()));
         ModBlocks.FLUID_VALVE.forEach(block -> event.modify(AllBlockEntityTypes.FLUID_VALVE.get(), block.get()));
         ModBlocks.ITEM_DRAINS.forEach(block -> event.modify(AllBlockEntityTypes.ITEM_DRAIN.get(), block.get()));
-        ModBlocks.SPOUTS.forEach(block -> event.modify(AllBlockEntityTypes.SPOUT.get(), block.get()));
+//        ModBlocks.SPOUTS.forEach(block -> event.modify(AllBlockEntityTypes.SPOUT.get(), block.get()));
         ModBlocks.PORTABLE_FLUID_INTERFACES.forEach(block -> event.modify(AllBlockEntityTypes.PORTABLE_FLUID_INTERFACE.get(), block.get()));
         ModBlocks.HOSE_PULLEYS.forEach(block -> event.modify(AllBlockEntityTypes.HOSE_PULLEY.get(), block.get()));
         ModBlocks.STEAM_ENGINES.forEach(block -> event.modify(AllBlockEntityTypes.STEAM_ENGINE.get(), block.get()));
@@ -126,8 +127,9 @@ public class CreateWorldOfColor {
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD)
     public static class CommonModEvents {
         @SubscribeEvent
-        public static void onClientSetup(RegisterCapabilitiesEvent event) {
+        public static void registerCapabilities(RegisterCapabilitiesEvent event) {
             ColoredFluidTankBlockEntity.registerCapabilities(event);
+            ColoredSpoutBlockEntity.registerCapabilities(event);
         }
     }
 }

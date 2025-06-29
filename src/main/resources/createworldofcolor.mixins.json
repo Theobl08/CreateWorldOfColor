@@ -6,8 +6,10 @@
   "refmap": "createworldofcolor.refmap.json",
   "mixins": [
     "BoilerDataMixin",
+    "CreateJEIMixin",
     "FluidPropagatorMixin",
     "PortableStorageInterfaceBlockEntityAccessor",
+    "SpoutBlockEntityAccessor",
     "SteamEngineBlockEntityMixin",
     "WhistleExtenderBlockMixin"
   ],

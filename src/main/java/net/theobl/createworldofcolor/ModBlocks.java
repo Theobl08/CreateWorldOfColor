@@ -68,6 +68,7 @@ import net.theobl.createworldofcolor.fluids.pipes.ColoredEncasedPipeBlock;
 import net.theobl.createworldofcolor.fluids.pipes.ColoredFluidPipeBlock;
 import net.theobl.createworldofcolor.fluids.pipes.ColoredGlassFluidPipeBlock;
 import net.theobl.createworldofcolor.fluids.pipes.ModSmartFluidPipeGenerator;
+import net.theobl.createworldofcolor.fluids.spout.ColoredSpoutBlock;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankBlock;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankItem;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankModel;
@@ -249,9 +250,9 @@ public class ModBlocks {
                 .register();
     });
 
-    public static final DyedBlockList<SpoutBlock> SPOUTS = new DyedBlockList<>(color -> {
+    public static final DyedBlockList<ColoredSpoutBlock> SPOUTS = new DyedBlockList<>(color -> {
         String colorName = color.getSerializedName();
-        return REGISTRATE.block(colorName + "_spout", SpoutBlock::new)
+        return REGISTRATE.block(colorName + "_spout", p -> new ColoredSpoutBlock(p, color))
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(pickaxeOnly())
                 .blockstate((ctx, prov) -> {
