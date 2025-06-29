@@ -9,6 +9,7 @@
     "CreateJEIMixin",
     "FluidPropagatorMixin",
     "PortableStorageInterfaceBlockEntityAccessor",
+    "PortableStorageInterfaceMovementMixin",
     "SpoutBlockEntityAccessor",
     "SteamEngineBlockEntityMixin",
     "WhistleExtenderBlockMixin"
