@@ -308,10 +308,13 @@ public class ModBlocks {
                             .texture("2", copperUnderside)
                             .texture("particle", copperUnderside);
                     p.models().withExistingParent(path + "/block_middle", Create.asResource(parentPath + "/block_middle"))
+                            .texture("2", portableFluidInterface)
                             .texture("particle", copperUnderside);
                     p.models().withExistingParent(path + "/block_middle_powered", Create.asResource(parentPath + "/block_middle_powered"))
+                            .texture("0", portableFluidInterface)
                             .texture("particle", copperUnderside);
                     p.models().withExistingParent(path + "/block_top", Create.asResource(parentPath + "/block_top"))
+                            .texture("0", portableFluidInterface)
                             .texture("particle", copperUnderside);
                     p.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
                             .texture("0", portableFluidInterface)

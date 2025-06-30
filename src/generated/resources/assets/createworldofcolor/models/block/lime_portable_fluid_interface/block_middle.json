@@ -1,6 +1,7 @@
 {
   "parent": "create:block/portable_fluid_interface/block_middle",
   "textures": {
+    "2": "createworldofcolor:block/lime_portable_fluid_interface",
     "particle": "createworldofcolor:block/lime_copper_underside"
   }
 }

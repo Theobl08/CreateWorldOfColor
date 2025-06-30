@@ -1,6 +1,7 @@
 {
   "parent": "create:block/portable_fluid_interface/block_top",
   "textures": {
+    "0": "createworldofcolor:block/green_portable_fluid_interface",
     "particle": "createworldofcolor:block/green_copper_underside"
   }
 }
