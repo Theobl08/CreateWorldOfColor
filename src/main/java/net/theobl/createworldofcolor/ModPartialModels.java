@@ -1,6 +1,5 @@
 package net.theobl.createworldofcolor;
 
-import com.simibubi.create.content.fluids.FluidTransportBehaviour;
 import com.simibubi.create.content.fluids.FluidTransportBehaviour.AttachmentTypes.ComponentPartials;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import net.createmod.catnip.data.Couple;
@@ -14,22 +13,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.simibubi.create.AllPartialModels.FOLDING_DOORS;
-import static com.simibubi.create.AllPartialModels.SPOUT_MIDDLE;
 
 public class ModPartialModels {
-    //Create casings map
-    public static final Map<DyeColor, PartialModel> COLORED_FLUID_PIPE_CASINGS = new EnumMap<>(DyeColor.class);
-    //Create attachment map
-    public static final Map<ComponentPartials, Map<DyeColor, Map<Direction, PartialModel>>> COLORED_PIPE_ATTACHMENTS = new EnumMap<>(ComponentPartials.class);
 
-    public static final Map<DyeColor, PartialModel> COLORED_SPOUT_TOP = new EnumMap<>(DyeColor.class),
+    public static final Map<DyeColor, PartialModel>
+
+            COLORED_PORTABLE_FLUID_INTERFACE_MIDDLE = new EnumMap<>(DyeColor.class),
+            COLORED_PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED = new EnumMap<>(DyeColor.class),
+            COLORED_PORTABLE_FLUID_INTERFACE_TOP = new EnumMap<>(DyeColor.class),
+
+            COLORED_FLUID_PIPE_CASINGS = new EnumMap<>(DyeColor.class),
+
+    COLORED_SPOUT_TOP = new EnumMap<>(DyeColor.class),
             COLORED_SPOUT_MIDDLE = new EnumMap<>(DyeColor.class),
             COLORED_SPOUT_BOTTOM = new EnumMap<>(DyeColor.class);
+
+    public static final Map<ComponentPartials, Map<DyeColor, Map<Direction, PartialModel>>> COLORED_PIPE_ATTACHMENTS = new EnumMap<>(ComponentPartials.class);
 
     static {
         for(DyeColor color : DyeColor.values()) {
             String id = color.getSerializedName();
             putFoldingDoor(id + "_door");
+
+            COLORED_PORTABLE_FLUID_INTERFACE_MIDDLE.put(color, block(color.getName() + "_portable_fluid_interface/block_middle"));
+            COLORED_PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED.put(color, block(color.getName() + "_portable_fluid_interface/block_middle_powered"));
+            COLORED_PORTABLE_FLUID_INTERFACE_TOP.put(color, block(color.getName() + "_portable_fluid_interface/block_top"));
 
             COLORED_FLUID_PIPE_CASINGS.put(color, block(color.getName() + "_fluid_pipe/casing"));
 

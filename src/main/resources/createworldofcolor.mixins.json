@@ -10,6 +10,7 @@
     "FluidPropagatorMixin",
     "PortableStorageInterfaceBlockEntityAccessor",
     "PortableStorageInterfaceMovementMixin",
+    "PortableStorageInterfaceRendererMixin",
     "SpoutBlockEntityAccessor",
     "SteamEngineBlockEntityMixin",
     "WhistleExtenderBlockMixin"
