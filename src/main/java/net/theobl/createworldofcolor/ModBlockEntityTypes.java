@@ -21,6 +21,7 @@ public class ModBlockEntityTypes {
     public static final HashMap<DyeColor, BlockEntityEntry<ColoredFluidTankBlockEntity>> COLORED_TANKS = new HashMap<>();
     public static final HashMap<DyeColor, BlockEntityEntry<ColoredFluidPipeBlockEntity>> COLORED_PIPES = new HashMap<>();
     public static final HashMap<DyeColor, BlockEntityEntry<ColoredSpoutBlockEntity>> COLORED_SPOUTS = new HashMap<>();
+//    public static final HashMap<DyeColor, BlockEntityEntry<ColoredPortableFluidInterfaceBlockEntity>> PORTABLE_FLUID_INTERFACES = new HashMap<>();
 
     private static void registerColoredTanks() {
         for (DyeColor color : DyeColor.values()) {
@@ -36,6 +37,11 @@ public class ModBlockEntityTypes {
                     .validBlocks(ModBlocks.SPOUTS.get(color))
                     .renderer(() -> context -> new ColoredSpoutRenderer(context, color))
                     .register());
+//            PORTABLE_FLUID_INTERFACES.put(color, CreateWorldOfColor.REGISTRATE.blockEntity(id + "_portable_fluid_interface", ColoredPortableFluidInterfaceBlockEntity::new)
+//                    .visual(() -> (context, be, partialTick) -> new ColoredPSIVisual(context, be, partialTick, color))
+//                    .validBlocks(ModBlocks.PORTABLE_FLUID_INTERFACES.get(color))
+//                    .renderer(() -> context -> new ColoredPortableStorageInterfaceRenderer(context, color))
+//                    .register());
         }
     }
 

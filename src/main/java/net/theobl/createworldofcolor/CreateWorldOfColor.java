@@ -129,6 +129,7 @@ public class CreateWorldOfColor {
         @SubscribeEvent
         public static void registerCapabilities(RegisterCapabilitiesEvent event) {
             ColoredFluidTankBlockEntity.registerCapabilities(event);
+//            ColoredPortableFluidInterfaceBlockEntity.registerCapabilities(event);
             ColoredSpoutBlockEntity.registerCapabilities(event);
         }
     }

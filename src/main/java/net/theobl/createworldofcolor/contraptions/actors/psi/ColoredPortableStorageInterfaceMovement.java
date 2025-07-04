@@ -1,9 +1,7 @@
 package net.theobl.createworldofcolor.contraptions.actors.psi;
 
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceBlock;
-import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceBlockEntity;
-import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceMovement;
+import com.simibubi.create.content.contraptions.actors.psi.*;
 import com.simibubi.create.content.contraptions.behaviour.MovementContext;
 import com.simibubi.create.content.trains.entity.CarriageContraption;
 import net.createmod.catnip.animation.LerpedFloat;
@@ -24,6 +22,21 @@ public class ColoredPortableStorageInterfaceMovement extends PortableStorageInte
 
     static final String _workingPos_ = "WorkingPos";
     static final String _clientPrevPos_ = "ClientPrevPos";
+
+//    @Nullable
+//    @Override
+//    public ActorVisual createVisual(VisualizationContext visualizationContext, VirtualRenderWorld simulationWorld,
+//                                    MovementContext movementContext) {
+//        return new ColoredPSIActorVisual(visualizationContext, simulationWorld, movementContext, color);
+//    }
+//
+//    @Override
+//    @OnlyIn(Dist.CLIENT)
+//    public void renderInContraption(MovementContext context, VirtualRenderWorld renderWorld,
+//                                    ContraptionMatrices matrices, MultiBufferSource buffer) {
+//        if (!VisualizationManager.supportsVisualization(context.world))
+//            ColoredPortableStorageInterfaceRenderer.renderInContraption(context, renderWorld, matrices, buffer, color);
+//    }
 
     public void tick(MovementContext context) {
         if (context.world.isClientSide)
