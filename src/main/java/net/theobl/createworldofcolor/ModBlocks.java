@@ -350,7 +350,8 @@ public class ModBlocks {
                             .texture("particle", copperUnderside);
                     p.horizontalFaceBlock(c.get(), AssetLookup.partialBaseModel(c, p));
                 })
-                .transform(ModCStress.setCapacity(1024.0))
+//                .transform(ModCStress.setCapacity(1024.0))
+                .onRegister((block) -> BlockStressValues.CAPACITIES.register(block, () -> BlockStressValues.getCapacity(AllBlocks.STEAM_ENGINE.get())))
                 .onRegister(BlockStressValues.setGeneratorSpeed(64, true))
                 .item()
                 .transform(customItemModel())
