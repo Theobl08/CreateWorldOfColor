@@ -52,33 +52,7 @@ public class ModBuilderTransformers {
         return b -> b.initialProperties(() -> Blocks.IRON_DOOR)
                 .properties(p -> p.requiresCorrectToolForDrops()
                         .strength(3.0F, 6.0F))
-                .blockstate((c, p) -> {
-                    p.models().withExistingParent("block/" + type + "_door/block_bottom", Create.asResource("block/copper_door/block_bottom"))
-                            .texture("0", "block/" + type + "_door_side")
-                            .texture("2", "block/" + type + "_door_bottom")
-                            .texture("particle", "block/" + type + "_casing");
-
-                    p.models().withExistingParent("block/" + type + "_door/block_top", Create.asResource("block/copper_door/block_top"))
-                            .texture("0", "block/" + type + "_door_side")
-                            .texture("2", "block/" + type +"_door_top")
-                            .texture("particle", "block/" + type + "_casing");
-
-                    p.models().withExistingParent("block/" + type + "_door/fold_left", Create.asResource("block/copper_door/fold_left"))
-                            .texture("0", "block/" + type + "_door_side")
-                            .texture("2", "block/" + type +"_door_top")
-                            .texture("3", "block/" + type + "_door_bottom")
-                            .texture("particle", "block/" + type + "_casing");
-
-                    p.models().withExistingParent("block/" + type + "_door/fold_right", Create.asResource("block/copper_door/fold_right"))
-                            .texture("0", "block/" + type + "_door_side")
-                            .texture("2", "block/" + type +"_door_top")
-                            .texture("3", "block/" + type + "_door_bottom")
-                            .texture("particle", "block/" + type + "_casing");
-
-                    ModelFile bottom = AssetLookup.partialBaseModel(c, p, "bottom");
-                    ModelFile top = AssetLookup.partialBaseModel(c, p, "top");
-                    p.doorBlock(c.get(), bottom, bottom, bottom, bottom, top, top, top, top);
-                })
+                .blockstate(ModBlockStateGen.slidingDoor(type))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(pickaxeOnly())
                 .onRegister(interactionBehaviour(new DoorMovingInteraction()))
@@ -121,20 +95,7 @@ public class ModBuilderTransformers {
                 .properties(p -> p.sound(SoundType.COPPER)
                         .mapColor(color))
                 //.addLayer(() -> RenderType::cutout)
-                .blockstate((c, p) -> p.getVariantBuilder(c.get())
-                        .forAllStatesExcept(s -> {
-                            String suffix = s.getValue(MetalScaffoldingBlock.BOTTOM) ? "_horizontal" : "";
-                            return ConfiguredModel.builder()
-                                    .modelFile(p.models()
-                                            .withExistingParent(c.getName() + suffix, Create.asResource("block/scaffold/block" + suffix))
-                                            .renderType("cutout")
-                                            .texture("top", p.modLoc("block/funnel/" + name + "_funnel_frame"))
-                                            .texture("inside", p.modLoc("block/scaffold/" + name + "_scaffold_inside"))
-                                            .texture("side", p.modLoc("block/scaffold/" + name + "_scaffold"))
-                                            .texture("casing", p.modLoc("block/" + name + "_casing"))
-                                            .texture("particle", p.modLoc("block/scaffold/" + name + "_scaffold")))
-                                    .build();
-                        }, MetalScaffoldingBlock.WATERLOGGED, MetalScaffoldingBlock.DISTANCE))
+                .blockstate(ModBlockStateGen.scaffold(name))
                 .onRegister(connectedTextures(
                         () -> new MetalScaffoldingCTBehaviour(scaffoldShift, scaffoldInsideShift, casingShift)))
                 .transform(pickaxeOnly())

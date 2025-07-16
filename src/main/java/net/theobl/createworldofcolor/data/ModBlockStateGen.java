@@ -3,10 +3,15 @@ package net.theobl.createworldofcolor.data;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.simibubi.create.Create;
+import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceBlock;
+import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlock;
+import com.simibubi.create.content.fluids.pipes.GlassFluidPipeBlock;
 import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
+import com.simibubi.create.content.fluids.spout.SpoutBlock;
 import com.simibubi.create.content.kinetics.base.DirectionalAxisKineticBlock;
+import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.BlockStateGen;
 import com.tterrag.registrate.providers.DataGenContext;
@@ -18,8 +23,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 
@@ -346,5 +354,147 @@ public class ModBlockStateGen {
                 .condition(propertyMap.get(rightD), right)
                 .condition(propertyMap.get(downD), down)
                 .end();
+    }
+
+    public static <P extends GlassFluidPipeBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> glassPipe(String colorName) {
+        return (c, p) -> {
+            p.getVariantBuilder(c.getEntry())
+                    .forAllStatesExcept(state -> {
+                        Direction.Axis axis = state.getValue(BlockStateProperties.AXIS);
+                        return ConfiguredModel.builder()
+                                .modelFile(p.models()
+                                        .getExistingFile(p.modLoc("block/" + colorName + "_fluid_pipe/window")))
+                                .uvLock(false)
+                                .rotationX(axis == Direction.Axis.Y ? 0 : 90)
+                                .rotationY(axis == Direction.Axis.X ? 90 : 0)
+                                .build();
+                    }, BlockStateProperties.WATERLOGGED);
+        };
+    }
+
+    public static <P extends SpoutBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> spout(String colorName) {
+        return (c, p) -> {
+            String path = "block/" + c.getName();
+            String parentPath = "block/spout";
+
+            String encasedPipe = "block/encased_" + colorName +"_pipe";
+            String copperUnderside = "block/" + colorName +"_copper_underside";
+            String spout = "block/" + colorName + "_spout";
+            String spoutNozzle = "block/" + colorName + "_spout_nozzle";
+
+            p.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
+                    .texture("0", spout)
+                    .texture("3", encasedPipe)
+                    .texture("particle", copperUnderside);
+            p.models().withExistingParent(path + "/bottom", Create.asResource(parentPath + "/bottom"))
+                    .texture("2", spoutNozzle);
+            p.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
+                    .texture("0", spout)
+                    .texture("3", spoutNozzle)
+                    .texture("4", encasedPipe)
+                    .texture("particle", copperUnderside);
+            p.models().withExistingParent(path + "/middle", Create.asResource(parentPath + "/middle"))
+                    .texture("0", spoutNozzle)
+                    .texture("particle", spoutNozzle);
+            p.models().withExistingParent(path + "/top", Create.asResource(parentPath + "/top"))
+                    .texture("0", spoutNozzle)
+                    .texture("particle", spoutNozzle);
+
+            p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p));
+        };
+    }
+    public static <P extends PortableStorageInterfaceBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> portableFluidInterface(String colorName) {
+        return (c, p) -> {
+            String path = "block/" + c.getName();
+            String parentPath = "block/portable_fluid_interface";
+
+            String copperUnderside = "block/" + colorName + "_copper_underside";
+            String portableFluidInterface = "block/" + colorName + "_portable_fluid_interface";
+
+            p.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
+                    .texture("0", portableFluidInterface)
+                    .texture("2", copperUnderside)
+                    .texture("particle", copperUnderside);
+            p.models().withExistingParent(path + "/block_middle", Create.asResource(parentPath + "/block_middle"))
+                    .texture("2", portableFluidInterface)
+                    .texture("particle", copperUnderside);
+            p.models().withExistingParent(path + "/block_middle_powered", Create.asResource(parentPath + "/block_middle_powered"))
+                    .texture("0", portableFluidInterface)
+                    .texture("particle", copperUnderside);
+            p.models().withExistingParent(path + "/block_top", Create.asResource(parentPath + "/block_top"))
+                    .texture("0", portableFluidInterface)
+                    .texture("particle", copperUnderside);
+            p.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
+                    .texture("0", portableFluidInterface)
+                    .texture("2", copperUnderside)
+                    .texture("particle", copperUnderside);
+
+            p.directionalBlock(c.get(), AssetLookup.partialBaseModel(c, p));
+        };
+    }
+
+    public static <P extends SteamEngineBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> steamEngine(String colorName) {
+        return (c, p) -> {
+            String path = "block/" + c.getName();
+            String parentPath = "block/steam_engine";
+
+            String copperUnderside = "block/" + colorName + "_copper_underside";
+            String engine = "block/" + colorName + "_engine";
+
+            p.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
+                    .texture("1", engine)
+                    .texture("particle", copperUnderside);
+            p.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
+                    .texture("1", engine)
+                    .texture("particle", copperUnderside);
+            p.horizontalFaceBlock(c.get(), AssetLookup.partialBaseModel(c, p));
+        };
+    }
+
+    public static <P extends Block> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> scaffold(String name) {
+        return (c, p) -> p.getVariantBuilder(c.get())
+                .forAllStatesExcept(s -> {
+                    String suffix = s.getValue(MetalScaffoldingBlock.BOTTOM) ? "_horizontal" : "";
+                    return ConfiguredModel.builder()
+                            .modelFile(p.models()
+                                    .withExistingParent(c.getName() + suffix, Create.asResource("block/scaffold/block" + suffix))
+                                    .renderType("cutout")
+                                    .texture("top", p.modLoc("block/funnel/" + name + "_funnel_frame"))
+                                    .texture("inside", p.modLoc("block/scaffold/" + name + "_scaffold_inside"))
+                                    .texture("side", p.modLoc("block/scaffold/" + name + "_scaffold"))
+                                    .texture("casing", p.modLoc("block/" + name + "_casing"))
+                                    .texture("particle", p.modLoc("block/scaffold/" + name + "_scaffold")))
+                            .build();
+                }, MetalScaffoldingBlock.WATERLOGGED, MetalScaffoldingBlock.DISTANCE);
+    }
+
+    public static <P extends DoorBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> slidingDoor(String type) {
+        return (c, p) -> {
+            p.models().withExistingParent("block/" + type + "_door/block_bottom", Create.asResource("block/copper_door/block_bottom"))
+                    .texture("0", "block/" + type + "_door_side")
+                    .texture("2", "block/" + type + "_door_bottom")
+                    .texture("particle", "block/" + type + "_casing");
+
+            p.models().withExistingParent("block/" + type + "_door/block_top", Create.asResource("block/copper_door/block_top"))
+                    .texture("0", "block/" + type + "_door_side")
+                    .texture("2", "block/" + type +"_door_top")
+                    .texture("particle", "block/" + type + "_casing");
+
+            p.models().withExistingParent("block/" + type + "_door/fold_left", Create.asResource("block/copper_door/fold_left"))
+                    .texture("0", "block/" + type + "_door_side")
+                    .texture("2", "block/" + type +"_door_top")
+                    .texture("3", "block/" + type + "_door_bottom")
+                    .texture("particle", "block/" + type + "_casing");
+
+            p.models().withExistingParent("block/" + type + "_door/fold_right", Create.asResource("block/copper_door/fold_right"))
+                    .texture("0", "block/" + type + "_door_side")
+                    .texture("2", "block/" + type +"_door_top")
+                    .texture("3", "block/" + type + "_door_bottom")
+                    .texture("particle", "block/" + type + "_casing");
+
+            ModelFile bottom = AssetLookup.partialBaseModel(c, p, "bottom");
+            ModelFile top = AssetLookup.partialBaseModel(c, p, "top");
+            p.doorBlock(c.get(), bottom, bottom, bottom, bottom, top, top, top, top);
+        };
     }
 }

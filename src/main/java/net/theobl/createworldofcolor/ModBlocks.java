@@ -147,19 +147,7 @@ public class ModBlocks {
                 .properties(p -> p.noOcclusion().mapColor(color))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(pickaxeOnly())
-                .blockstate((c, p) -> {
-                    p.getVariantBuilder(c.getEntry())
-                            .forAllStatesExcept(state -> {
-                                Direction.Axis axis = state.getValue(BlockStateProperties.AXIS);
-                                return ConfiguredModel.builder()
-                                        .modelFile(p.models()
-                                                .getExistingFile(p.modLoc("block/" + colorName + "_fluid_pipe/window")))
-                                        .uvLock(false)
-                                        .rotationX(axis == Direction.Axis.Y ? 0 : 90)
-                                        .rotationY(axis == Direction.Axis.X ? 90 : 0)
-                                        .build();
-                            }, BlockStateProperties.WATERLOGGED);
-                })
+                .blockstate(ModBlockStateGen.glassPipe(colorName))
                 .onRegister(blockModel(() -> ColoredPipeAttachmentModel::withAO, color))
                 .loot((p, b) -> p.dropOther(b, FLUID_PIPES.get(color).get()))
                 .register();
@@ -261,35 +249,7 @@ public class ModBlocks {
         return REGISTRATE.block(colorName + "_spout", p -> new ColoredSpoutBlock(p, color))
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(pickaxeOnly())
-                .blockstate((ctx, prov) -> {
-                    String path = "block/" + ctx.getName();
-                    String parentPath = "block/spout";
-
-                    String encasedPipe = "block/encased_" + colorName +"_pipe";
-                    String copperUnderside = "block/" + colorName +"_copper_underside";
-                    String spout = "block/" + colorName + "_spout";
-                    String spoutNozzle = "block/" + colorName + "_spout_nozzle";
-
-                    prov.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
-                            .texture("0", spout)
-                            .texture("3", encasedPipe)
-                            .texture("particle", copperUnderside);
-                    prov.models().withExistingParent(path + "/bottom", Create.asResource(parentPath + "/bottom"))
-                            .texture("2", spoutNozzle);
-                    prov.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
-                            .texture("0", spout)
-                            .texture("3", spoutNozzle)
-                            .texture("4", encasedPipe)
-                            .texture("particle", copperUnderside);
-                    prov.models().withExistingParent(path + "/middle", Create.asResource(parentPath + "/middle"))
-                            .texture("0", spoutNozzle)
-                            .texture("particle", spoutNozzle);
-                    prov.models().withExistingParent(path + "/top", Create.asResource(parentPath + "/top"))
-                            .texture("0", spoutNozzle)
-                            .texture("particle", spoutNozzle);
-
-                    prov.simpleBlock(ctx.getEntry(), AssetLookup.partialBaseModel(ctx, prov));
-                })
+                .blockstate(ModBlockStateGen.spout(colorName))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .item(AssemblyOperatorBlockItem::new)
                 .transform(customItemModel())
@@ -302,33 +262,7 @@ public class ModBlocks {
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(p -> p.mapColor(color))
                 .transform(axeOrPickaxe())
-                .blockstate((c, p) -> {
-                    String path = "block/" + c.getName();
-                    String parentPath = "block/portable_fluid_interface";
-
-                    String copperUnderside = "block/" + colorName + "_copper_underside";
-                    String portableFluidInterface = "block/" + colorName + "_portable_fluid_interface";
-
-                    p.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
-                            .texture("0", portableFluidInterface)
-                            .texture("2", copperUnderside)
-                            .texture("particle", copperUnderside);
-                    p.models().withExistingParent(path + "/block_middle", Create.asResource(parentPath + "/block_middle"))
-                            .texture("2", portableFluidInterface)
-                            .texture("particle", copperUnderside);
-                    p.models().withExistingParent(path + "/block_middle_powered", Create.asResource(parentPath + "/block_middle_powered"))
-                            .texture("0", portableFluidInterface)
-                            .texture("particle", copperUnderside);
-                    p.models().withExistingParent(path + "/block_top", Create.asResource(parentPath + "/block_top"))
-                            .texture("0", portableFluidInterface)
-                            .texture("particle", copperUnderside);
-                    p.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
-                            .texture("0", portableFluidInterface)
-                            .texture("2", copperUnderside)
-                            .texture("particle", copperUnderside);
-
-                    p.directionalBlock(c.get(), AssetLookup.partialBaseModel(c, p));
-                })
+                .blockstate(ModBlockStateGen.portableFluidInterface(colorName))
                 .onRegister(movementBehaviour(new ColoredPortableStorageInterfaceMovement()))
                 .item()
                 .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
@@ -341,21 +275,7 @@ public class ModBlocks {
         return REGISTRATE.block(colorName + "_steam_engine", p -> new ColoredSteamEngineBlock(p, color))
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(pickaxeOnly())
-                .blockstate((c, p) -> {
-                    String path = "block/" + c.getName();
-                    String parentPath = "block/steam_engine";
-
-                    String copperUnderside = "block/" + colorName + "_copper_underside";
-                    String engine = "block/" + colorName + "_engine";
-
-                    p.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
-                            .texture("1", engine)
-                            .texture("particle", copperUnderside);
-                    p.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
-                            .texture("1", engine)
-                            .texture("particle", copperUnderside);
-                    p.horizontalFaceBlock(c.get(), AssetLookup.partialBaseModel(c, p));
-                })
+                .blockstate(ModBlockStateGen.steamEngine(colorName))
 //                .transform(ModCStress.setCapacity(1024.0))
                 .onRegister((block) -> BlockStressValues.CAPACITIES.register(block, () -> BlockStressValues.getCapacity(AllBlocks.STEAM_ENGINE.get())))
                 .onRegister(BlockStressValues.setGeneratorSpeed(64, true))
