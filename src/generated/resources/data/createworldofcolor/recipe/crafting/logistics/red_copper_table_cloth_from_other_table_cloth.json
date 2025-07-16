@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:dyes/red"
+    },
+    {
+      "tag": "createworldofcolor:dyeable_table_cloths"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createworldofcolor:red_copper_table_cloth"
+  }
+}

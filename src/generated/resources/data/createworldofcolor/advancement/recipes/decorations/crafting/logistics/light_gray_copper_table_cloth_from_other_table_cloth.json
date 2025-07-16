@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_table_cloth": {
+      "conditions": {
+        "items": [
+          {
+            "items": "create:copper_table_cloth"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "createworldofcolor:crafting/logistics/light_gray_copper_table_cloth_from_other_table_cloth"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_table_cloth"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "createworldofcolor:crafting/logistics/light_gray_copper_table_cloth_from_other_table_cloth"
+    ]
+  }
+}

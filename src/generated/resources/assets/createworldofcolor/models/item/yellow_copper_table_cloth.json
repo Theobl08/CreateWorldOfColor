@@ -1,0 +1,6 @@
+{
+  "parent": "create:block/table_cloth/item",
+  "textures": {
+    "0": "createworldofcolor:block/table_cloth/yellow"
+  }
+}

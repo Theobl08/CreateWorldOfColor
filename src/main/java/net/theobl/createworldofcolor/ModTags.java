@@ -70,7 +70,8 @@ public class ModTags {
         DYEABLE_CASINGS,
         DYEABLE_DOORS,
         DYEABLE_LADDERS,
-        DYEABLE_SCAFFOLDS;
+        DYEABLE_SCAFFOLDS,
+        DYEABLE_TABLE_CLOTHS;
 
         public final TagKey<Item> tag;
         public final boolean alwaysDatagen;

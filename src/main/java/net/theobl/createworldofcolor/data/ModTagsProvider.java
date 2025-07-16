@@ -21,5 +21,6 @@ public class ModTagsProvider {
         prov.tag(ModTags.Items.DYEABLE_SCAFFOLDS.tag).add(AllBlocks.COPPER_SCAFFOLD.asItem());
         prov.tag(ModTags.Items.DYEABLE_DOORS.tag).add(AllBlocks.COPPER_DOOR.asItem());
         prov.tag(ModTags.Items.DYEABLE_LADDERS.tag).add(AllBlocks.COPPER_LADDER.asItem());
+        prov.tag(ModTags.Items.DYEABLE_TABLE_CLOTHS.tag).add(AllBlocks.COPPER_TABLE_CLOTH.asItem());
     }
 }

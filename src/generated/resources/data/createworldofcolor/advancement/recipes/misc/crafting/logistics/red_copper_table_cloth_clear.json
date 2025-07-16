@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_red_copper_table_cloth": {
+      "conditions": {
+        "items": [
+          {
+            "items": "createworldofcolor:red_copper_table_cloth"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "createworldofcolor:crafting/logistics/red_copper_table_cloth_clear"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_red_copper_table_cloth"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "createworldofcolor:crafting/logistics/red_copper_table_cloth_clear"
+    ]
+  }
+}

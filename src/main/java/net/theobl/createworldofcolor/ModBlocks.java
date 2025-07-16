@@ -21,6 +21,7 @@ import com.simibubi.create.content.fluids.pump.PumpBlock;
 import com.simibubi.create.content.fluids.spout.SpoutBlock;
 import com.simibubi.create.content.fluids.tank.*;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
+import com.simibubi.create.content.logistics.tableCloth.TableClothBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.block.CopperBlockSet;
 import com.simibubi.create.foundation.block.DyedBlockList;
@@ -74,6 +75,7 @@ import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankItem;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankModel;
 import net.theobl.createworldofcolor.fluids.tank.ModFluidTankGenerator;
 import net.theobl.createworldofcolor.kinetics.steamEngine.ColoredSteamEngineBlock;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.function.Supplier;
 
@@ -367,6 +369,23 @@ public class ModBlocks {
                 .blockstate(new ModWhistleGenerator(colorName + "_")::generate)
                 .item()
                 .transform(customItemModel())
+                .register();
+    });
+
+    public static final DyedBlockList<TableClothBlock> TABLE_CLOTHS = new DyedBlockList<>( color -> {
+        String colorName = color.getSerializedName();
+        return REGISTRATE.block(colorName + "_copper_table_cloth", p -> new TableClothBlock(p, colorName))
+                .transform(ModBuilderTransformers.tableCloth(colorName, SharedProperties::copperMetal, true))
+                .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+                .recipe((c, p) -> {
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, c.get())
+                            .requires(color.getTag())
+                            .requires(ModTags.Items.DYEABLE_TABLE_CLOTHS.tag)
+                            .unlockedBy("has_table_cloth", RegistrateRecipeProvider.has(AllBlocks.COPPER_TABLE_CLOTH))
+                            .save(p, CreateWorldOfColor.asResource("crafting/logistics/" + c.getName() + "_from_other_table_cloth"));
+                })
+                .transform(pickaxeOnly())
+                .lang(StringUtils.capitalize(colorName) + " Copper Table Cover")
                 .register();
     });
 

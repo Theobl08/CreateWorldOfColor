@@ -9,16 +9,24 @@ import com.simibubi.create.content.decoration.MetalScaffoldingBlockItem;
 import com.simibubi.create.content.decoration.MetalScaffoldingCTBehaviour;
 import com.simibubi.create.content.decoration.slidingDoor.SlidingDoorBlock;
 import com.simibubi.create.content.decoration.slidingDoor.SlidingDoorMovementBehaviour;
+import com.simibubi.create.content.logistics.tableCloth.TableClothBlockItem;
+import com.simibubi.create.content.logistics.tableCloth.TableClothModel;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.AssetLookup;
+import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.foundation.item.ItemDescription;
 import com.tterrag.registrate.builders.BlockBuilder;
+import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -26,6 +34,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.theobl.createworldofcolor.CreateWorldOfColor;
 import net.theobl.createworldofcolor.ModTags;
 
 import static com.simibubi.create.api.behaviour.interaction.MovingInteractionBehaviour.interactionBehaviour;
@@ -151,5 +160,32 @@ public class ModBuilderTransformers {
                 })
                 .model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/" + c.getName())))
                 .build();
+    }
+
+    public static <B extends Block, P> NonNullUnaryOperator<BlockBuilder<B, P>> tableCloth(String name,
+                                                                                           NonNullSupplier<? extends Block> initialProps, boolean dyed) {
+        return b -> {
+            TagKey<Block> soundTag = dyed ? BlockTags.COMBINATION_STEP_SOUND_BLOCKS : BlockTags.INSIDE_STEP_SOUND_BLOCKS;
+
+            ItemBuilder<TableClothBlockItem, BlockBuilder<B, P>> item = b.initialProperties(initialProps)
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .blockstate((c, p) -> p.simpleBlock(c.get(), p.models()
+                            .withExistingParent(name + "_copper_table_cloth", Create.asResource("block/table_cloth/block"))
+                            .texture("0", p.modLoc("block/table_cloth/" + name))))
+                    .onRegister(CreateRegistrate.blockModel(() -> TableClothModel::new))
+                    .tag(AllTags.AllBlockTags.TABLE_CLOTHS.tag, soundTag)
+                    .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "block.create.table_cloth"))
+                    .item(TableClothBlockItem::new);
+
+            return item.model((c, p) ->
+                            p.withExistingParent(name + "_copper_table_cloth", Create.asResource("block/table_cloth/item"))
+                            .texture("0", p.modLoc("block/table_cloth/" + name)))
+                    .tag(AllTags.AllItemTags.TABLE_CLOTHS.tag, ModTags.Items.DYEABLE_TABLE_CLOTHS.tag)
+                    .recipe((c, p) -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, c.get())
+                            .requires(c.get())
+                            .unlockedBy("has_" + c.getName(), RegistrateRecipeProvider.has(c.get()))
+                            .save(p, CreateWorldOfColor.asResource("crafting/logistics/" + c.getName() + "_clear")))
+                    .build();
+        };
     }
 }
