@@ -6,7 +6,7 @@
       "tag": "createworldofcolor:dyeable_scaffolds"
     },
     {
-      "item": "minecraft:white_dye"
+      "tag": "c:dyes/white"
     }
   ],
   "result": {

@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.IronBarsBlock;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.theobl.createworldofcolor.CreateWorldOfColor;
+import net.theobl.createworldofcolor.ModBlocks;
 import net.theobl.createworldofcolor.ModTags;
 
 import java.util.function.Supplier;
@@ -124,8 +126,7 @@ public class MetalBars {
                 .texture("edge", edgeTexture);
     }
 
-    public static BlockEntry<IronBarsBlock> createBars(String name, boolean specialEdge,
-                                                       Supplier<DataIngredient> ingredient, MapColor color) {
+    public static BlockEntry<IronBarsBlock> createBars(String name, boolean specialEdge, DyeColor color) {
         return CreateWorldOfColor.REGISTRATE.block(name + "_bars", IronBarsBlock::new)
                 .addLayer(() -> RenderType::cutoutMipped)
                 .initialProperties(() -> Blocks.IRON_BARS)
@@ -141,14 +142,8 @@ public class MetalBars {
                     p.generated(c, barsTexture);
                 })
                 .tag(ModTags.Items.DYEABLE_BARS.tag)
-                .recipe((c, p) -> {
-                    ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, c.get(), 1)
-                            .requires(ModTags.Items.DYEABLE_BARS.tag)
-                            .requires(ingredient.get().toVanilla())
-                            .unlockedBy("has_bars", RegistrateRecipeProvider.has(AllBlocks.COPPER_BARS))
-                            .save(p);
-                })
                 .build()
+                .recipe(ModBlocks.dyeBlock(RecipeCategory.DECORATIONS, color, ModTags.Items.DYEABLE_BARS.tag, "bars", "palettes"))
                 .register();
     }
 }

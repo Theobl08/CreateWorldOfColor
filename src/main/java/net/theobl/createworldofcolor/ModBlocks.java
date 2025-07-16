@@ -29,8 +29,10 @@ import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.item.ItemDescription;
+import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
+import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullBiFunction;
 import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import net.createmod.catnip.platform.CatnipServices;
@@ -41,8 +43,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.DyeItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -393,20 +397,21 @@ public class ModBlocks {
         String colorName = color.getName();
         return REGISTRATE.block(colorName + "_ladder", MetalLadderBlock::new)
                 .transform(ModBuilderTransformers.ladder(colorName, Ingredient.of(DyeItem.byColor(color)), color.getMapColor()))
+                .recipe(dyeBlock(RecipeCategory.DECORATIONS, color, ModTags.Items.DYEABLE_LADDERS.tag, "ladder", "palettes"))
                 .register();
     });
 
     public static final DyedBlockList<IronBarsBlock> DYED_BARS = new DyedBlockList<>(color -> {
         String colorName = color.getName();
-        return MetalBars.createBars(colorName, true, () -> DataIngredient.items(DyeItem.byColor(color)), color.getMapColor());
+        return MetalBars.createBars(colorName, true, color);
     });
 
     public static final DyedBlockList<MetalScaffoldingBlock> DYED_SCAFFOLDS = new DyedBlockList<>(color -> {
         String colorName = color.getName();
         return REGISTRATE.block(colorName + "_scaffolding", MetalScaffoldingBlock::new)
-                .transform(ModBuilderTransformers.scaffold(colorName,
-                        Ingredient.of(DyeItem.byColor(color)), color.getMapColor(),
+                .transform(ModBuilderTransformers.scaffold(colorName, color.getMapColor(),
                         ModSpriteShifts.DYED_SCAFFOLDS.get(color), ModSpriteShifts.DYED_SCAFFOLDS_INSIDE.get(color), ModSpriteShifts.DYED_CASINGS.get(color)))
+                .recipe(dyeBlock(RecipeCategory.DECORATIONS, color, ModTags.Items.DYEABLE_SCAFFOLDS.tag, "scaffold", "palettes"))
                 .register();
     });
 
@@ -452,6 +457,7 @@ public class ModBlocks {
                 .properties(p -> p.mapColor(color)
                         .sound(SoundType.STONE)
                         .noOcclusion())
+                .recipe(dyeBlock(RecipeCategory.DECORATIONS, color, ModTags.Items.DYEABLE_DOORS.tag, "door", "kinetics"))
                 .register();
     });
 
@@ -490,5 +496,14 @@ public class ModBlocks {
                                            Supplier<NonNullBiFunction<BakedModel, DyeColor, ? extends BakedModel>> func, DyeColor color) {
         CreateClient.MODEL_SWAPPER.getCustomBlockModels()
                 .register(RegisteredObjectsHelper.getKeyOrThrow(entry), model -> func.get().apply(model, color));
+    }
+
+    public static <P extends Block> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateRecipeProvider> dyeBlock(
+            RecipeCategory category, DyeColor color, TagKey<Item> tag, String type, String folder) {
+        return (c, p) -> ShapelessRecipeBuilder.shapeless(category, c.get())
+                .requires(tag)
+                .requires(color.getTag())
+                .unlockedBy("has_" + type, RegistrateRecipeProvider.has(tag))
+                .save(p);
     }
 }

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "create:copper_door"
+            "items": "#createworldofcolor:dyeable_doors"
           }
         ]
       },

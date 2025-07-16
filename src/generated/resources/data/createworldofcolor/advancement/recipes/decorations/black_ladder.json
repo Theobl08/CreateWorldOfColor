@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "create:copper_ladder"
+            "items": "#createworldofcolor:dyeable_ladders"
           }
         ]
       },

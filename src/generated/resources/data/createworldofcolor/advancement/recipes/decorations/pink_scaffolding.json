@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "create:copper_scaffolding"
+            "items": "#createworldofcolor:dyeable_scaffolds"
           }
         ]
       },

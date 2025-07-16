@@ -17,7 +17,9 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
+import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import net.minecraft.client.renderer.RenderType;
@@ -27,6 +29,8 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -87,13 +91,6 @@ public class ModBuilderTransformers {
                 .tag(ItemTags.DOORS)
                 .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
                 .tag(ModTags.Items.DYEABLE_DOORS.tag)
-                .recipe((c, p) -> {
-                    ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, c.get(), 1)
-                            .requires(ModTags.Items.DYEABLE_DOORS.tag)
-                            .requires(ingredient)
-                            .unlockedBy("has_door", RegistrateRecipeProvider.has(AllBlocks.COPPER_DOOR))
-                            .save(p);
-                })
                 .model((c, p) -> p.blockSprite(c, p.modLoc("item/" + type + "_door")))
                 .build();
     }
@@ -113,19 +110,12 @@ public class ModBuilderTransformers {
                 .tag(BlockTags.CLIMBABLE)
                 .item()
                 .tag(ModTags.Items.DYEABLE_LADDERS.tag)
-                .recipe((c, p) -> {
-                    ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, c.get(), 1)
-                            .requires(ModTags.Items.DYEABLE_LADDERS.tag)
-                            .requires(ingredient)
-                            .unlockedBy("has_ladder", RegistrateRecipeProvider.has(AllBlocks.COPPER_LADDER))
-                            .save(p);
-                })
                 .model((c, p) -> p.blockSprite(c::get, p.modLoc("block/ladder_" + name)))
                 .build();
     }
 
     public static <B extends Block, P> NonNullUnaryOperator<BlockBuilder<B, P>> scaffold(String name,
-                                                                                         Ingredient ingredient, MapColor color, CTSpriteShiftEntry scaffoldShift,
+                                                                                         MapColor color, CTSpriteShiftEntry scaffoldShift,
                                                                                          CTSpriteShiftEntry scaffoldInsideShift, CTSpriteShiftEntry casingShift) {
         return b -> b.initialProperties(() -> Blocks.SCAFFOLDING)
                 .properties(p -> p.sound(SoundType.COPPER)
@@ -151,13 +141,6 @@ public class ModBuilderTransformers {
                 .tag(BlockTags.CLIMBABLE)
                 .item(MetalScaffoldingBlockItem::new)
                 .tag(ModTags.Items.DYEABLE_SCAFFOLDS.tag)
-                .recipe((c, p) -> {
-                    ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, c.get(), 1)
-                            .requires(ModTags.Items.DYEABLE_SCAFFOLDS.tag)
-                            .requires(ingredient)
-                            .unlockedBy("has_scaffold", RegistrateRecipeProvider.has(AllBlocks.COPPER_SCAFFOLD))
-                            .save(p);
-                })
                 .model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/" + c.getName())))
                 .build();
     }

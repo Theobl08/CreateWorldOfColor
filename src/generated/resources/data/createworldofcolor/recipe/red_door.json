@@ -6,7 +6,7 @@
       "tag": "createworldofcolor:dyeable_doors"
     },
     {
-      "item": "minecraft:red_dye"
+      "tag": "c:dyes/red"
     }
   ],
   "result": {

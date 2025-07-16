@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "create:copper_bars"
+            "items": "#createworldofcolor:dyeable_bars"
           }
         ]
       },

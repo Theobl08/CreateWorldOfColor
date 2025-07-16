@@ -6,7 +6,7 @@
       "tag": "createworldofcolor:dyeable_ladders"
     },
     {
-      "item": "minecraft:gray_dye"
+      "tag": "c:dyes/gray"
     }
   ],
   "result": {

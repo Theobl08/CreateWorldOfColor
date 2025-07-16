@@ -6,7 +6,7 @@
       "tag": "createworldofcolor:dyeable_bars"
     },
     {
-      "item": "minecraft:lime_dye"
+      "tag": "c:dyes/lime"
     }
   ],
   "result": {

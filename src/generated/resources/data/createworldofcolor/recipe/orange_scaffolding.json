@@ -6,7 +6,7 @@
       "tag": "createworldofcolor:dyeable_scaffolds"
     },
     {
-      "item": "minecraft:orange_dye"
+      "tag": "c:dyes/orange"
     }
   ],
   "result": {

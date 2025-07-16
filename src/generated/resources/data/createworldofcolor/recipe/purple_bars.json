@@ -6,7 +6,7 @@
       "tag": "createworldofcolor:dyeable_bars"
     },
     {
-      "item": "minecraft:purple_dye"
+      "tag": "c:dyes/purple"
     }
   ],
   "result": {
