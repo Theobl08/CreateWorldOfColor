@@ -206,7 +206,7 @@ public class ModBlocks {
                 .transform(displaySource(AllDisplaySources.BOILER))
                 .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
                 .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
-                .addLayer(() -> RenderType::cutoutMipped)
+                //.addLayer(() -> RenderType::cutoutMipped)
                 .item(ColoredFluidTankItem::new)
                 .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
                 .build()
@@ -218,7 +218,7 @@ public class ModBlocks {
         return REGISTRATE.block(colorName + "_hose_pulley", HosePulleyBlock::new)
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(BlockBehaviour.Properties::noOcclusion)
-                .addLayer(() -> RenderType::cutoutMipped)
+                //.addLayer(() -> RenderType::cutoutMipped)
                 .transform(pickaxeOnly())
                 .blockstate(ModBlockStateGen.hosePulley(color, true))
                 .transform(ModCStress.setImpact(4.0))
@@ -232,9 +232,10 @@ public class ModBlocks {
         return  REGISTRATE.block(colorName + "_item_drain", ItemDrainBlock::new)
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(pickaxeOnly())
-                .addLayer(() -> RenderType::cutoutMipped)
+                //.addLayer(() -> RenderType::cutoutMipped)
                 .blockstate((c, p) -> {
                     p.models().withExistingParent(c.getName(), Create.asResource("block/item_drain"))
+                            .renderType(RenderType.cutoutMipped().name)
                             .texture("0", "block/" + c.getName() + "_side")
                             .texture("3", "block/" + colorName + "_pump")
                             .texture("4", "block/" + colorName + "_copper_underside");
@@ -250,7 +251,7 @@ public class ModBlocks {
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(pickaxeOnly())
                 .blockstate(ModBlockStateGen.spout(colorName))
-                .addLayer(() -> RenderType::cutoutMipped)
+                //.addLayer(() -> RenderType::cutoutMipped)
                 .item(AssemblyOperatorBlockItem::new)
                 .transform(customItemModel())
                 .register();

@@ -1,5 +1,6 @@
 {
   "parent": "create:block/table_cloth/block",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
     "0": "createworldofcolor:block/table_cloth/black"
   }

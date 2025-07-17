@@ -1,5 +1,6 @@
 {
   "parent": "create:block/copper_door/block_bottom",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
     "0": "createworldofcolor:block/magenta_door_side",
     "2": "createworldofcolor:block/magenta_door_bottom",

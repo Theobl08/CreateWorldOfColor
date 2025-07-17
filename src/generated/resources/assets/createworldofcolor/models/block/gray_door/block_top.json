@@ -1,5 +1,6 @@
 {
   "parent": "create:block/copper_door/block_top",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
     "0": "createworldofcolor:block/gray_door_side",
     "2": "createworldofcolor:block/gray_door_top",

@@ -7,6 +7,7 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -39,6 +40,7 @@ public class ModFluidTankGenerator extends FluidTankGenerator {
 
         return prov.models()
                 .withExistingParent("block/" + prefix + "fluid_tank/block_" + modelName, parent)
+                .renderType(RenderType.cutoutMipped().name)
                 .texture("0", prov.modLoc("block/" + prefix + "fluid_tank_top"))
                 .texture("1", prov.modLoc("block/" + prefix + "fluid_tank"))
                 .texture("3", prov.modLoc("block/" + prefix + "fluid_tank_window"))

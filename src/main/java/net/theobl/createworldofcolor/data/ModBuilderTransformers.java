@@ -53,7 +53,7 @@ public class ModBuilderTransformers {
                 .properties(p -> p.requiresCorrectToolForDrops()
                         .strength(3.0F, 6.0F))
                 .blockstate(ModBlockStateGen.slidingDoor(type))
-                .addLayer(() -> RenderType::cutoutMipped)
+                //.addLayer(() -> RenderType::cutoutMipped)
                 .transform(pickaxeOnly())
                 .onRegister(interactionBehaviour(new DoorMovingInteraction()))
                 .onRegister(movementBehaviour(new SlidingDoorMovementBehaviour()))
@@ -112,9 +112,10 @@ public class ModBuilderTransformers {
             TagKey<Block> soundTag = dyed ? BlockTags.COMBINATION_STEP_SOUND_BLOCKS : BlockTags.INSIDE_STEP_SOUND_BLOCKS;
 
             ItemBuilder<TableClothBlockItem, BlockBuilder<B, P>> item = b.initialProperties(initialProps)
-                    .addLayer(() -> RenderType::cutoutMipped)
+                    //.addLayer(() -> RenderType::cutoutMipped)
                     .blockstate((c, p) -> p.simpleBlock(c.get(), p.models()
                             .withExistingParent(name + "_copper_table_cloth", Create.asResource("block/table_cloth/block"))
+                            .renderType(RenderType.cutoutMipped().name)
                             .texture("0", p.modLoc("block/table_cloth/" + name))))
                     .onRegister(CreateRegistrate.blockModel(() -> TableClothModel::new))
                     .tag(AllTags.AllBlockTags.TABLE_CLOTHS.tag, soundTag)

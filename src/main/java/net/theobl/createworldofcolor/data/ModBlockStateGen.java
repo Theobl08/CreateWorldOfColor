@@ -19,6 +19,7 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import net.createmod.catnip.data.Iterate;
 import net.createmod.catnip.math.Pointing;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
@@ -383,6 +384,7 @@ public class ModBlockStateGen {
             String spoutNozzle = "block/" + colorName + "_spout_nozzle";
 
             p.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
+                    .renderType(RenderType.cutoutMipped().name)
                     .texture("0", spout)
                     .texture("3", encasedPipe)
                     .texture("particle", copperUnderside);
@@ -471,11 +473,13 @@ public class ModBlockStateGen {
     public static <P extends DoorBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> slidingDoor(String type) {
         return (c, p) -> {
             p.models().withExistingParent("block/" + type + "_door/block_bottom", Create.asResource("block/copper_door/block_bottom"))
+                    .renderType(RenderType.cutoutMipped().name)
                     .texture("0", "block/" + type + "_door_side")
                     .texture("2", "block/" + type + "_door_bottom")
                     .texture("particle", "block/" + type + "_casing");
 
             p.models().withExistingParent("block/" + type + "_door/block_top", Create.asResource("block/copper_door/block_top"))
+                    .renderType(RenderType.cutoutMipped().name)
                     .texture("0", "block/" + type + "_door_side")
                     .texture("2", "block/" + type +"_door_top")
                     .texture("particle", "block/" + type + "_casing");

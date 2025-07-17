@@ -1,5 +1,6 @@
 {
   "parent": "create:block/bars/post_ends",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
     "bars": "createworldofcolor:block/bars/magenta_bars",
     "edge": "createworldofcolor:block/bars/magenta_bars_edge",

@@ -1,5 +1,6 @@
 {
   "parent": "create:block/fluid_tank/block_top_window_ne",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
     "0": "createworldofcolor:block/white_fluid_tank_top",
     "1": "createworldofcolor:block/white_fluid_tank",

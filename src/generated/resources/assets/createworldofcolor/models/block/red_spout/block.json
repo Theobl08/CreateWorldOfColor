@@ -1,5 +1,6 @@
 {
   "parent": "create:block/spout/block",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
     "0": "createworldofcolor:block/red_spout",
     "3": "createworldofcolor:block/encased_red_pipe",

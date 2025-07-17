@@ -121,6 +121,7 @@ public class MetalBars {
         ResourceLocation edgeTexture = specialEdge ? p.modLoc("block/bars/" + name + "_bars_edge") : barsTexture;
         return p.models()
                 .withExistingParent(name + "_" + suffix, Create.asResource("block/bars/" + suffix))
+                .renderType(RenderType.cutoutMipped().name)
                 .texture("bars", barsTexture)
                 .texture("particle", barsTexture)
                 .texture("edge", edgeTexture);
@@ -128,7 +129,7 @@ public class MetalBars {
 
     public static BlockEntry<IronBarsBlock> createBars(String name, boolean specialEdge, DyeColor color) {
         return CreateWorldOfColor.REGISTRATE.block(name + "_bars", IronBarsBlock::new)
-                .addLayer(() -> RenderType::cutoutMipped)
+                //.addLayer(() -> RenderType::cutoutMipped)
                 .initialProperties(() -> Blocks.IRON_BARS)
                 .properties(p -> p.sound(SoundType.COPPER)
                         .mapColor(color))

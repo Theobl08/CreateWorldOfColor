@@ -1,5 +1,6 @@
 {
   "parent": "create:block/bars/cap_alt",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
     "bars": "createworldofcolor:block/bars/blue_bars",
     "edge": "createworldofcolor:block/bars/blue_bars_edge",

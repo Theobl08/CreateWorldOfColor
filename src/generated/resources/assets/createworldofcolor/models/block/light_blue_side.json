@@ -1,5 +1,6 @@
 {
   "parent": "create:block/bars/side",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
     "bars": "createworldofcolor:block/bars/light_blue_bars",
     "edge": "createworldofcolor:block/bars/light_blue_bars_edge",
