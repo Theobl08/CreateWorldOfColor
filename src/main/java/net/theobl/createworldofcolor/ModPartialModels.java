@@ -29,7 +29,9 @@ public class ModPartialModels {
 
     COLORED_SPOUT_TOP = new EnumMap<>(DyeColor.class),
             COLORED_SPOUT_MIDDLE = new EnumMap<>(DyeColor.class),
-            COLORED_SPOUT_BOTTOM = new EnumMap<>(DyeColor.class);
+            COLORED_SPOUT_BOTTOM = new EnumMap<>(DyeColor.class),
+
+    COLORED_BOILER_GAUGE = new EnumMap<>(DyeColor.class), COLORED_BOILER_GAUGE_DIAL = new EnumMap<>(DyeColor.class);
 
     public static final Map<ComponentPartials, Map<DyeColor, Map<Direction, PartialModel>>> COLORED_PIPE_ATTACHMENTS = new EnumMap<>(ComponentPartials.class);
 
@@ -50,6 +52,9 @@ public class ModPartialModels {
             COLORED_SPOUT_TOP.put(color, block(color.getName() + "_spout/top"));
             COLORED_SPOUT_MIDDLE.put(color, block(color.getName() + "_spout/middle"));
             COLORED_SPOUT_BOTTOM.put(color, block(color.getName() + "_spout/bottom"));
+
+            COLORED_BOILER_GAUGE.put(color, block(color.getName() + "_steam_engine/gauge"));
+            COLORED_BOILER_GAUGE_DIAL.put(color, block(color.getName() + "_steam_engine/gauge_dial"));
         }
 
         for (ComponentPartials type : ComponentPartials.values()) {

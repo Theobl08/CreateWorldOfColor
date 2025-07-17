@@ -10,6 +10,7 @@ import net.theobl.createworldofcolor.fluids.pipes.ColoredFluidPipeBlockEntity;
 import net.theobl.createworldofcolor.fluids.spout.ColoredSpoutBlockEntity;
 import net.theobl.createworldofcolor.fluids.spout.ColoredSpoutRenderer;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankBlockEntity;
+import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankRenderer;
 
 import java.util.HashMap;
 
@@ -32,7 +33,7 @@ public class ModBlockEntityTypes {
             String id = color.getSerializedName();
             COLORED_TANKS.put(color, CreateWorldOfColor.REGISTRATE.blockEntity(id + "_fluid_tank", ColoredFluidTankBlockEntity::new)
                     .validBlocks(ModBlocks.FLUID_TANKS.get(color))
-                    .renderer(() -> FluidTankRenderer::new)
+                    .renderer(() -> ColoredFluidTankRenderer.of(color))
                     .register());
             COLORED_PIPES.put(color, CreateWorldOfColor.REGISTRATE.blockEntity(id + "_fluid_pipe", ColoredFluidPipeBlockEntity::new)
                     .validBlocks(ModBlocks.FLUID_PIPES.get(color))

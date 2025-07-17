@@ -445,10 +445,17 @@ public class ModBlockStateGen {
 
             String copperUnderside = "block/" + colorName + "_copper_underside";
             String engine = "block/" + colorName + "_engine";
+            String boilerGauge = "block/" + colorName + "_boiler_gauge";
 
             p.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
                     .texture("1", engine)
                     .texture("particle", copperUnderside);
+            p.models().withExistingParent(path + "/gauge", Create.asResource(parentPath + "/gauge"))
+                    .texture("0", boilerGauge)
+                    .texture("particle", boilerGauge);
+            p.models().withExistingParent(path + "/gauge_dial", Create.asResource(parentPath + "/gauge_dial"))
+                    .texture("0", boilerGauge)
+                    .texture("particle", boilerGauge);
             p.models().withExistingParent(path + "/item", Create.asResource(parentPath + "/item"))
                     .texture("1", engine)
                     .texture("particle", copperUnderside);
