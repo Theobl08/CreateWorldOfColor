@@ -4,6 +4,7 @@
   "textures": {
     "0": "createworldofcolor:block/pink_item_drain_side",
     "3": "createworldofcolor:block/pink_pump",
-    "4": "createworldofcolor:block/pink_copper_underside"
+    "4": "createworldofcolor:block/pink_copper_underside",
+    "particle": "createworldofcolor:block/pink_item_drain_side"
   }
 }

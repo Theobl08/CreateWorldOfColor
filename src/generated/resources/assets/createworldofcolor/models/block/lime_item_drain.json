@@ -4,6 +4,7 @@
   "textures": {
     "0": "createworldofcolor:block/lime_item_drain_side",
     "3": "createworldofcolor:block/lime_pump",
-    "4": "createworldofcolor:block/lime_copper_underside"
+    "4": "createworldofcolor:block/lime_copper_underside",
+    "particle": "createworldofcolor:block/lime_item_drain_side"
   }
 }

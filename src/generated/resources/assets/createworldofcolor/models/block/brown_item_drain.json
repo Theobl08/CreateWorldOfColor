@@ -4,6 +4,7 @@
   "textures": {
     "0": "createworldofcolor:block/brown_item_drain_side",
     "3": "createworldofcolor:block/brown_pump",
-    "4": "createworldofcolor:block/brown_copper_underside"
+    "4": "createworldofcolor:block/brown_copper_underside",
+    "particle": "createworldofcolor:block/brown_item_drain_side"
   }
 }

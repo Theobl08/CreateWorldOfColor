@@ -238,7 +238,8 @@ public class ModBlocks {
                             .renderType(RenderType.cutoutMipped().name)
                             .texture("0", "block/" + c.getName() + "_side")
                             .texture("3", "block/" + colorName + "_pump")
-                            .texture("4", "block/" + colorName + "_copper_underside");
+                            .texture("4", "block/" + colorName + "_copper_underside")
+                            .texture("particle", "block/" + c.getName() + "_side");
                     p.simpleBlock(c.get(), AssetLookup.standardModel(c, p));
                 })
                 .simpleItem()
