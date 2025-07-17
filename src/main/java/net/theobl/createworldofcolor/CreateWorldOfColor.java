@@ -28,6 +28,7 @@ import net.theobl.createworldofcolor.data.ModDataMapProvider;
 import net.theobl.createworldofcolor.data.ModRecipeProvider;
 import net.theobl.createworldofcolor.data.ModStandardRecipeGen;
 import net.theobl.createworldofcolor.data.ModTagsProvider;
+import net.theobl.createworldofcolor.fluids.hosePulley.ColoredHosePulleyBlockEntity;
 import net.theobl.createworldofcolor.fluids.spout.ColoredSpoutBlockEntity;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankBlockEntity;
 import org.slf4j.Logger;
@@ -82,7 +83,7 @@ public class CreateWorldOfColor {
         ModBlocks.ITEM_DRAINS.forEach(block -> event.modify(AllBlockEntityTypes.ITEM_DRAIN.get(), block.get()));
 //        ModBlocks.SPOUTS.forEach(block -> event.modify(AllBlockEntityTypes.SPOUT.get(), block.get()));
         ModBlocks.PORTABLE_FLUID_INTERFACES.forEach(block -> event.modify(AllBlockEntityTypes.PORTABLE_FLUID_INTERFACE.get(), block.get()));
-        ModBlocks.HOSE_PULLEYS.forEach(block -> event.modify(AllBlockEntityTypes.HOSE_PULLEY.get(), block.get()));
+        //ModBlocks.HOSE_PULLEYS.forEach(block -> event.modify(AllBlockEntityTypes.HOSE_PULLEY.get(), block.get()));
         ModBlocks.STEAM_ENGINES.forEach(block -> event.modify(AllBlockEntityTypes.STEAM_ENGINE.get(), block.get()));
         ModBlocks.STEAM_WHISTLES.forEach(block -> event.modify(AllBlockEntityTypes.STEAM_WHISTLE.get(), block.get()));
         ModBlocks.TABLE_CLOTHS.forEach(block -> event.modify(AllBlockEntityTypes.TABLE_CLOTH.get(), block.get()));
@@ -132,6 +133,7 @@ public class CreateWorldOfColor {
             ColoredFluidTankBlockEntity.registerCapabilities(event);
 //            ColoredPortableFluidInterfaceBlockEntity.registerCapabilities(event);
             ColoredSpoutBlockEntity.registerCapabilities(event);
+            ColoredHosePulleyBlockEntity.registerCapabilities(event);
         }
     }
 }

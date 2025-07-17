@@ -76,6 +76,7 @@ public class ModBlockStateGen {
             String tankInner = "block/" + colorName + "_fluid_tank_inner";
             String pump = "block/" + colorName + "_pump";
             String hosePulley = "block/" + colorName + "_hose_pulley";
+            String hose = "block/" + colorName + "_hose";
 
             p.models().withExistingParent(path + "/block", Create.asResource(parentPath + "/block"))
                     .texture("1", hosePulley)
@@ -87,10 +88,12 @@ public class ModBlockStateGen {
                     .texture("3", pump)
                     .texture("particle", tankInner);
             p.models().withExistingParent(path + "/pulley_magnet", Create.asResource(parentPath + "/pulley_magnet"))
+                    .texture("0", hose)
                     .texture("particle", tankInner);
 //            p.models().withExistingParent(path + "/rope", parentPath + "/rope");
 //            p.models().withExistingParent(path + "/rope_half", parentPath + "/rope_half");
             p.models().withExistingParent(path + "/rope_half_magnet", Create.asResource(parentPath + "/rope_half_magnet"))
+                    .texture("0", hose)
                     .texture("particle", tankInner);
 
             p.horizontalBlock(c.get(), getBlockModel(customItem, c, p));

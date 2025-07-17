@@ -69,6 +69,7 @@ import net.theobl.createworldofcolor.data.ModBuilderTransformers;
 import net.theobl.createworldofcolor.decoration.steamWhistle.ColoredWhistleBlock;
 import net.theobl.createworldofcolor.decoration.steamWhistle.ModWhistleGenerator;
 import net.theobl.createworldofcolor.fluids.ColoredPipeAttachmentModel;
+import net.theobl.createworldofcolor.fluids.hosePulley.ColoredHosePulleyBlock;
 import net.theobl.createworldofcolor.fluids.pipes.ColoredEncasedPipeBlock;
 import net.theobl.createworldofcolor.fluids.pipes.ColoredFluidPipeBlock;
 import net.theobl.createworldofcolor.fluids.pipes.ColoredGlassFluidPipeBlock;
@@ -215,7 +216,7 @@ public class ModBlocks {
 
     public static final DyedBlockList<HosePulleyBlock> HOSE_PULLEYS = new DyedBlockList<>(color -> {
         String colorName = color.getSerializedName();
-        return REGISTRATE.block(colorName + "_hose_pulley", HosePulleyBlock::new)
+        return REGISTRATE.block(colorName + "_hose_pulley", p -> new ColoredHosePulleyBlock(p, color))
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 //.addLayer(() -> RenderType::cutoutMipped)

@@ -18,6 +18,9 @@ public class ModPartialModels {
 
     public static final Map<DyeColor, PartialModel>
 
+            COLORED_HOSE_MAGNET =  new EnumMap<>(DyeColor.class),
+            COLORED_HOSE_HALF_MAGNET = new EnumMap<>(DyeColor.class),
+
             COLORED_PORTABLE_FLUID_INTERFACE_MIDDLE = new EnumMap<>(DyeColor.class),
             COLORED_PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED = new EnumMap<>(DyeColor.class),
             COLORED_PORTABLE_FLUID_INTERFACE_TOP = new EnumMap<>(DyeColor.class),
@@ -34,6 +37,9 @@ public class ModPartialModels {
         for(DyeColor color : DyeColor.values()) {
             String id = color.getSerializedName();
             putFoldingDoor(id + "_door");
+
+            COLORED_HOSE_MAGNET.put(color, block(color.getName() + "_hose_pulley/pulley_magnet"));
+            COLORED_HOSE_HALF_MAGNET.put(color, block(color.getName() + "_hose_pulley/rope_half_magnet"));
 
             COLORED_PORTABLE_FLUID_INTERFACE_MIDDLE.put(color, block(color.getName() + "_portable_fluid_interface/block_middle"));
             COLORED_PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED.put(color, block(color.getName() + "_portable_fluid_interface/block_middle_powered"));

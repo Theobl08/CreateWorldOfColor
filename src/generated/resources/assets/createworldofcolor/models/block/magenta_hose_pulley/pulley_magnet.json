@@ -1,6 +1,7 @@
 {
   "parent": "create:block/hose_pulley/pulley_magnet",
   "textures": {
+    "0": "createworldofcolor:block/magenta_hose",
     "particle": "createworldofcolor:block/magenta_fluid_tank_inner"
   }
 }
