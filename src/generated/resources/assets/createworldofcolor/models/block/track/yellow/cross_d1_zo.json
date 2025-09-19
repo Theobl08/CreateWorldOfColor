@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/track/cross_d1_zo",
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "0": "createworldofcolor:block/yellow_standard_track",
+    "1": "createworldofcolor:block/yellow_standard_track_mip",
+    "2": "createworldofcolor:block/yellow_standard_track_crossing",
+    "particle": "createworldofcolor:block/copper/yellow_copper_roof_top"
+  }
+}

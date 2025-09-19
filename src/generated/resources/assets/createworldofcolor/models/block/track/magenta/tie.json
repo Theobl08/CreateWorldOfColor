@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/track/tie",
+  "textures": {
+    "0": "createworldofcolor:block/magenta_standard_track",
+    "1": "createworldofcolor:block/magenta_standard_track_mip",
+    "particle": "createworldofcolor:block/copper/magenta_copper_roof_top"
+  }
+}

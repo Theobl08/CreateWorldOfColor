@@ -31,6 +31,7 @@ import net.theobl.createworldofcolor.data.ModTagsProvider;
 import net.theobl.createworldofcolor.fluids.hosePulley.ColoredHosePulleyBlockEntity;
 import net.theobl.createworldofcolor.fluids.spout.ColoredSpoutBlockEntity;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankBlockEntity;
+import net.theobl.createworldofcolor.trains.track.ModTrackMaterial;
 import org.slf4j.Logger;
 
 import java.util.concurrent.CompletableFuture;
@@ -52,6 +53,7 @@ public class CreateWorldOfColor {
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
         REGISTRATE.registerEventListeners(modEventBus);
 
+        ModTrackMaterial.register();
         ModCreativeModeTabs.register(modEventBus);
         ModBlocks.register();
         ModBlockEntityTypes.register();

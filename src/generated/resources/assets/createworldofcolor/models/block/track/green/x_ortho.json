@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/track/x_ortho",
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "1": "createworldofcolor:block/green_standard_track",
+    "2": "createworldofcolor:block/green_standard_track_mip",
+    "3": "createworldofcolor:block/green_standard_track_crossing",
+    "particle": "createworldofcolor:block/copper/green_copper_roof_top"
+  }
+}

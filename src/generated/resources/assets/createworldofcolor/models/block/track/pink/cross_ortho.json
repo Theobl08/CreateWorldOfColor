@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/track/cross_ortho",
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "1": "createworldofcolor:block/pink_standard_track",
+    "2": "createworldofcolor:block/pink_standard_track_mip",
+    "3": "createworldofcolor:block/pink_standard_track_crossing",
+    "particle": "createworldofcolor:block/copper/pink_copper_roof_top"
+  }
+}

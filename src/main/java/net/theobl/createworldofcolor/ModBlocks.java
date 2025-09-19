@@ -18,11 +18,11 @@ import com.simibubi.create.content.fluids.hosePulley.HosePulleyBlock;
 import com.simibubi.create.content.fluids.pipes.*;
 import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
 import com.simibubi.create.content.fluids.pump.PumpBlock;
-import com.simibubi.create.content.fluids.spout.SpoutBlock;
 import com.simibubi.create.content.fluids.tank.*;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
 import com.simibubi.create.content.logistics.tableCloth.TableClothBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
+import com.simibubi.create.content.trains.track.*;
 import com.simibubi.create.foundation.block.CopperBlockSet;
 import com.simibubi.create.foundation.block.DyedBlockList;
 import com.simibubi.create.foundation.data.AssetLookup;
@@ -31,7 +31,6 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
-import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullBiFunction;
 import com.tterrag.registrate.util.nullness.NonNullConsumer;
@@ -39,7 +38,6 @@ import net.createmod.catnip.platform.CatnipServices;
 import net.createmod.catnip.registry.RegisteredObjectsHelper;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
@@ -55,11 +53,9 @@ import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.theobl.createworldofcolor.block.ColoredCopperBlockSet;
 import net.theobl.createworldofcolor.config.ModCStress;
 import net.theobl.createworldofcolor.contraptions.actors.psi.ColoredPortableStorageInterfaceMovement;
@@ -80,7 +76,10 @@ import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankItem;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankModel;
 import net.theobl.createworldofcolor.fluids.tank.ModFluidTankGenerator;
 import net.theobl.createworldofcolor.kinetics.steamEngine.ColoredSteamEngineBlock;
+import net.theobl.createworldofcolor.trains.track.ModTrackMaterial;
+import net.theobl.createworldofcolor.trains.track.ModTrackBlockStateGenerator;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.function.Supplier;
 
@@ -296,6 +295,30 @@ public class ModBlocks {
                 .blockstate(new ModWhistleGenerator(colorName + "_")::generate)
                 .item()
                 .transform(customItemModel())
+                .register();
+    });
+
+    public static final DyedBlockList<TrackBlock> TRACKS = new DyedBlockList<>(color -> {
+        return REGISTRATE.block(color.getName() + "_track", ModTrackMaterial.DYED.get(color)::createBlock)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.mapColor(MapColor.METAL)
+                        .strength(0.8F)
+                        .sound(SoundType.METAL)
+                        .noOcclusion()
+                        .forceSolidOn())
+                //.addLayer(() -> RenderType::cutoutMipped)
+                .transform(pickaxeOnly())
+                .clientExtension(() -> TrackBlock.RenderProperties::new)
+                .onRegister(CreateRegistrate.blockModel(() -> TrackModel::new))
+                .blockstate(new ModTrackBlockStateGenerator()::generate)
+                .tag(AllTags.AllBlockTags.RELOCATION_NOT_SUPPORTED.tag)
+                .tag(AllTags.AllBlockTags.TRACKS.tag)
+                .tag(AllTags.AllBlockTags.GIRDABLE_TRACKS.tag)
+                .lang(WordUtils.capitalize(color.getSerializedName().replace("_", " ")) + " Train Track")
+                .item(TrackBlockItem::new)
+                .tag(AllTags.AllItemTags.TRACKS.tag)
+                .model((c, p) -> p.generated(c, CreateWorldOfColor.asResource("item/" + c.getName())))
+                .build()
                 .register();
     });
 

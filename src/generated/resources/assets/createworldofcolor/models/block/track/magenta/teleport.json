@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/track/teleport",
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "1": "createworldofcolor:block/magenta_portal_track",
+    "2": "createworldofcolor:block/magenta_portal_track_mip",
+    "3": "createworldofcolor:block/magenta_standard_track",
+    "particle": "createworldofcolor:block/copper/magenta_copper_roof_top"
+  }
+}

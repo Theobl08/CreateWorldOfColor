@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/track/diag",
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "0": "createworldofcolor:block/black_standard_track",
+    "1": "createworldofcolor:block/black_standard_track_mip",
+    "2": "createworldofcolor:block/black_standard_track_crossing",
+    "particle": "createworldofcolor:block/copper/black_copper_roof_top"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/track/cross_diag",
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "0": "createworldofcolor:block/magenta_standard_track",
+    "1": "createworldofcolor:block/magenta_standard_track_mip",
+    "2": "createworldofcolor:block/magenta_standard_track_crossing",
+    "particle": "createworldofcolor:block/copper/magenta_copper_roof_top"
+  }
+}

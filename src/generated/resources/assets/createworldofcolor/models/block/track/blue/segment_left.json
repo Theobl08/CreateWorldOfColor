@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/track/segment_left",
+  "textures": {
+    "0": "createworldofcolor:block/blue_standard_track",
+    "1": "createworldofcolor:block/blue_standard_track_mip",
+    "particle": "createworldofcolor:block/copper/blue_copper_roof_top"
+  }
+}

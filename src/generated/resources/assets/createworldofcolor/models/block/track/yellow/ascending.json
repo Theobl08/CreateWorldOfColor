@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/track/ascending",
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "0": "createworldofcolor:block/yellow_standard_track",
+    "1": "createworldofcolor:block/yellow_standard_track_mip",
+    "particle": "createworldofcolor:block/copper/yellow_copper_roof_top"
+  }
+}
