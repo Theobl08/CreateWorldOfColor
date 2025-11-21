@@ -184,6 +184,7 @@ public class ModBlocks {
         String colorName = color.getSerializedName();
         return REGISTRATE.block(colorName + "_fluid_valve", FluidValveBlock::new)
                 .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.mapColor(color))
                 .transform(pickaxeOnly())
                 .addLayer(() -> RenderType::cutoutMipped)
                 .blockstate(ModBlockStateGen.fluidValve(color))
@@ -197,7 +198,7 @@ public class ModBlocks {
         String colorName = color.getName();
         return REGISTRATE.block(colorName + "_fluid_tank", p ->  new ColoredFluidTankBlock(p, color))
                 .initialProperties(SharedProperties::copperMetal)
-                .properties(p -> p.noOcclusion()
+                .properties(p -> p.noOcclusion().mapColor(color)
                         .isRedstoneConductor((p1, p2, p3) -> true))
                 .transform(pickaxeOnly())
                 .blockstate(new ModFluidTankGenerator(colorName + "_")::generate)
@@ -217,7 +218,7 @@ public class ModBlocks {
         String colorName = color.getSerializedName();
         return REGISTRATE.block(colorName + "_hose_pulley", p -> new ColoredHosePulleyBlock(p, color))
                 .initialProperties(SharedProperties::copperMetal)
-                .properties(BlockBehaviour.Properties::noOcclusion)
+                .properties(p -> p.noOcclusion().mapColor(color))
                 //.addLayer(() -> RenderType::cutoutMipped)
                 .transform(pickaxeOnly())
                 .blockstate(ModBlockStateGen.hosePulley(color, true))
@@ -231,6 +232,7 @@ public class ModBlocks {
         String colorName = color.getSerializedName();
         return  REGISTRATE.block(colorName + "_item_drain", ItemDrainBlock::new)
                 .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.mapColor(color))
                 .transform(pickaxeOnly())
                 //.addLayer(() -> RenderType::cutoutMipped)
                 .blockstate((c, p) -> {
@@ -250,6 +252,7 @@ public class ModBlocks {
         String colorName = color.getSerializedName();
         return REGISTRATE.block(colorName + "_spout", p -> new ColoredSpoutBlock(p, color))
                 .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.mapColor(color))
                 .transform(pickaxeOnly())
                 .blockstate(ModBlockStateGen.spout(colorName))
                 //.addLayer(() -> RenderType::cutoutMipped)
@@ -276,6 +279,7 @@ public class ModBlocks {
         String colorName = color.getSerializedName();
         return REGISTRATE.block(colorName + "_steam_engine", p -> new ColoredSteamEngineBlock(p, color))
                 .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.mapColor(color))
                 .transform(pickaxeOnly())
                 .blockstate(ModBlockStateGen.steamEngine(colorName))
 //                .transform(ModCStress.setCapacity(1024.0))
@@ -326,7 +330,7 @@ public class ModBlocks {
         String colorName = color.getSerializedName();
         return REGISTRATE.block(colorName + "_copper_table_cloth", p -> new TableClothBlock(p, colorName))
                 .transform(ModBuilderTransformers.tableCloth(colorName, SharedProperties::copperMetal, true))
-                .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
+                .properties(p -> p.requiresCorrectToolForDrops().mapColor(color))
                 .recipe((c, p) -> {
                     ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, c.get())
                             .requires(color.getTag())
