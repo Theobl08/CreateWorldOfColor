@@ -65,7 +65,7 @@ public class ModStandardRecipeGen extends BaseRecipeProvider {
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput output) {
+    public void buildRecipes(RecipeOutput output) {
         all.forEach(c -> c.register(output));
         CreateWorldOfColor.LOGGER.info("{} registered {} recipe{}", getName(), all.size(), all.size() == 1 ? "" : "s");
     }

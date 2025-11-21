@@ -56,6 +56,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.Tags;
 import net.theobl.createworldofcolor.block.ColoredCopperBlockSet;
 import net.theobl.createworldofcolor.config.ModCStress;
 import net.theobl.createworldofcolor.contraptions.actors.psi.ColoredPortableStorageInterfaceMovement;
@@ -315,7 +316,7 @@ public class ModBlocks {
                 .clientExtension(() -> TrackBlock.RenderProperties::new)
                 .onRegister(CreateRegistrate.blockModel(() -> TrackModel::new))
                 .blockstate(new ModTrackBlockStateGenerator()::generate)
-                .tag(AllTags.AllBlockTags.RELOCATION_NOT_SUPPORTED.tag)
+                .tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED)
                 .tag(AllTags.AllBlockTags.TRACKS.tag)
                 .tag(AllTags.AllBlockTags.GIRDABLE_TRACKS.tag)
                 .lang(WordUtils.capitalize(color.getSerializedName().replace("_", " ")) + " Train Track")
