@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(FluidPropagator.class)
 public abstract class FluidPropagatorMixin {
-    @ModifyExpressionValue(method = "propagateChangedPipe", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z"))
+    @ModifyExpressionValue(method = "propagateChangedPipe", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z"), require = 0)
     private static boolean propagateChangedPipe(boolean original, @Local(ordinal = 2) BlockState targetState) {
         return original || ModHelper.isColoredBlock(targetState, ModBlocks.MECHANICAL_PUMPS);
     }
