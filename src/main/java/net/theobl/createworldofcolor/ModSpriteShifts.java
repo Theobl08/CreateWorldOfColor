@@ -23,6 +23,8 @@ public class ModSpriteShifts {
 
     public static final Map<DyeColor, CTSpriteShiftEntry> DYED_CASINGS = new EnumMap<>(DyeColor.class);
 
+    public static final Map<DyeColor, CTSpriteShiftEntry> COLORED_GIRDER_POLE = new EnumMap<>(DyeColor.class);
+
     static {
         populateMaps();
     }
@@ -34,6 +36,8 @@ public class ModSpriteShifts {
             DYED_SCAFFOLDS_INSIDE.put(color, horizontal("scaffold/"+ id + "_scaffold_inside"));
 
             DYED_CASINGS.put(color, omni(id + "_casing"));
+
+            COLORED_GIRDER_POLE.put(color, vertical(id + "_girder_pole_side"));
 
             COLORED_TANKS.put(color, getCT(AllCTTypes.RECTANGLE, id + "_fluid_tank"));
             COLORED_TANKS_TOP.put(color, getCT(AllCTTypes.RECTANGLE, id + "_fluid_tank_top"));
@@ -51,6 +55,10 @@ public class ModSpriteShifts {
 
     private static CTSpriteShiftEntry horizontal(String name) {
         return getCT(AllCTTypes.HORIZONTAL, name);
+    }
+
+    private static CTSpriteShiftEntry vertical(String name) {
+        return getCT(AllCTTypes.VERTICAL, name);
     }
 
     private static CTSpriteShiftEntry getCT(CTType type, String blockTextureName, String connectedTextureName) {

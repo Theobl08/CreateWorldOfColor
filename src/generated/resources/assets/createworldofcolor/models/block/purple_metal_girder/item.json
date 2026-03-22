@@ -1,0 +1,6 @@
+{
+  "parent": "create:block/metal_girder/item",
+  "textures": {
+    "0": "createworldofcolor:block/purple_girder"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/metal_girder/block_x",
+  "textures": {
+    "0": "createworldofcolor:block/light_gray_girder",
+    "particle": "createworldofcolor:block/copper/light_gray_copper_roof_top"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "create:block/metal_girder/bracket_west",
+  "textures": {
+    "0": "createworldofcolor:block/yellow_girder"
+  }
+}

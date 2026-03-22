@@ -1,0 +1,6 @@
+{
+  "parent": "create:block/metal_girder/segment_middle",
+  "textures": {
+    "0": "createworldofcolor:block/gray_girder"
+  }
+}

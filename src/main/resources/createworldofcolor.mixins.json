@@ -8,17 +8,25 @@
     "BoilerDataMixin",
     "CreateJEIMixin",
     "FluidPropagatorMixin",
+    "GirderBlockMixin",
+    "GirderPlacementHelperMixin",
+    "GirderWrenchBehaviorMixin",
     "HosePulleyBlockEntityAccessor",
     "PortableStorageInterfaceBlockEntityAccessor",
     "PortableStorageInterfaceMovementMixin",
     "PortableStorageInterfaceRendererMixin",
     "SpoutBlockEntityAccessor",
     "SteamEngineBlockEntityMixin",
+    "TrackBlockItemMixin",
+    "TrackPaverMixin",
     "WhistleExtenderBlockMixin"
   ],
   "client": [
   ],
   "injectors": {
     "defaultRequire": 1
+  },
+  "mixinextras": {
+    "minVersion": "0.5.0"
   }
 }

@@ -31,9 +31,15 @@ public class ModPartialModels {
             COLORED_SPOUT_MIDDLE = new EnumMap<>(DyeColor.class),
             COLORED_SPOUT_BOTTOM = new EnumMap<>(DyeColor.class),
 
-    COLORED_BOILER_GAUGE = new EnumMap<>(DyeColor.class), COLORED_BOILER_GAUGE_DIAL = new EnumMap<>(DyeColor.class);
+    COLORED_BOILER_GAUGE = new EnumMap<>(DyeColor.class), COLORED_BOILER_GAUGE_DIAL = new EnumMap<>(DyeColor.class),
+
+    COLORED_GIRDER_SEGMENT_TOP = new EnumMap<>(DyeColor.class),
+            COLORED_GIRDER_SEGMENT_MIDDLE = new EnumMap<>(DyeColor.class),
+            COLORED_GIRDER_SEGMENT_BOTTOM = new EnumMap<>(DyeColor.class);
 
     public static final Map<ComponentPartials, Map<DyeColor, Map<Direction, PartialModel>>> COLORED_PIPE_ATTACHMENTS = new EnumMap<>(ComponentPartials.class);
+
+    public static final Map<DyeColor, Map<Direction, PartialModel>> COLORED_METAL_GIRDER_BRACKETS = new EnumMap<>(DyeColor.class);
 
     static {
         for(DyeColor color : DyeColor.values()) {
@@ -55,6 +61,16 @@ public class ModPartialModels {
 
             COLORED_BOILER_GAUGE.put(color, block(color.getName() + "_steam_engine/gauge"));
             COLORED_BOILER_GAUGE_DIAL.put(color, block(color.getName() + "_steam_engine/gauge_dial"));
+
+            Map<Direction, PartialModel> metalGirderBrackets = new EnumMap<>(Direction.class);
+            for(Direction d : Iterate.horizontalDirections) {
+                metalGirderBrackets.put(d, block(id + "_metal_girder/bracket_" + Lang.asId(d.name())));
+            }
+            COLORED_METAL_GIRDER_BRACKETS.put(color, metalGirderBrackets);
+
+            COLORED_GIRDER_SEGMENT_TOP.put(color, block(id + "metal_girder/segment_top"));
+            COLORED_GIRDER_SEGMENT_MIDDLE.put(color, block(id + "metal_girder/segment_middle"));
+            COLORED_GIRDER_SEGMENT_BOTTOM.put(color, block(id + "metal_girder/segment_bottom"));
         }
 
         for (ComponentPartials type : ComponentPartials.values()) {

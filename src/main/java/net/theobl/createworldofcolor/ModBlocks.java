@@ -11,6 +11,7 @@ import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.RoofBlockCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
+import com.simibubi.create.content.decoration.girder.GirderBlock;
 import com.simibubi.create.content.decoration.slidingDoor.SlidingDoorBlock;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
 import com.simibubi.create.content.fluids.drain.ItemDrainBlock;
@@ -52,7 +53,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WeatheringCopper;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -63,6 +63,9 @@ import net.theobl.createworldofcolor.contraptions.actors.psi.ColoredPortableStor
 import net.theobl.createworldofcolor.data.MetalBars;
 import net.theobl.createworldofcolor.data.ModBlockStateGen;
 import net.theobl.createworldofcolor.data.ModBuilderTransformers;
+import net.theobl.createworldofcolor.decoration.girder.ColoredConnectedGirderModel;
+import net.theobl.createworldofcolor.decoration.girder.ColoredGirderBlock;
+import net.theobl.createworldofcolor.decoration.girder.ColoredGirderBlockStateGenerator;
 import net.theobl.createworldofcolor.decoration.steamWhistle.ColoredWhistleBlock;
 import net.theobl.createworldofcolor.decoration.steamWhistle.ModWhistleGenerator;
 import net.theobl.createworldofcolor.fluids.ColoredPipeAttachmentModel;
@@ -363,6 +366,20 @@ public class ModBlocks {
                 .transform(ModBuilderTransformers.scaffold(colorName, color.getMapColor(),
                         ModSpriteShifts.DYED_SCAFFOLDS.get(color), ModSpriteShifts.DYED_SCAFFOLDS_INSIDE.get(color), ModSpriteShifts.DYED_CASINGS.get(color)))
                 .recipe(dyeBlock(RecipeCategory.DECORATIONS, color, ModTags.Items.DYEABLE_SCAFFOLDS.tag, "scaffold", "palettes"))
+                .register();
+    });
+
+    public static final DyedBlockList<GirderBlock> DYED_METAL_GIRDERS = new DyedBlockList<>(color -> {
+        String colorName = color.getSerializedName();
+        return REGISTRATE.block(colorName + "_metal_girder", p -> new ColoredGirderBlock(p, color))
+                .initialProperties(SharedProperties::softMetal)
+                .properties(p -> p.mapColor(color)
+                        .sound(SoundType.NETHERITE_BLOCK))
+                .transform(pickaxeOnly())
+                .blockstate((c, p) -> ColoredGirderBlockStateGenerator.blockState(c, p, color))
+                .onRegister(CreateRegistrate.blockModel(() -> model -> new ColoredConnectedGirderModel(model, color)))
+                .item()
+                .transform(customItemModel())
                 .register();
     });
 
