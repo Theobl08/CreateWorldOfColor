@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/metal_girder_encased_shaft/block_bottom",
+  "textures": {
+    "0": "createworldofcolor:block/pink_girder",
+    "particle": "createworldofcolor:block/copper/pink_copper_roof_top"
+  }
+}

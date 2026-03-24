@@ -89,6 +89,7 @@ public class CreateWorldOfColor {
         ModBlocks.STEAM_ENGINES.forEach(block -> event.modify(AllBlockEntityTypes.STEAM_ENGINE.get(), block.get()));
         ModBlocks.STEAM_WHISTLES.forEach(block -> event.modify(AllBlockEntityTypes.STEAM_WHISTLE.get(), block.get()));
         ModBlocks.TABLE_CLOTHS.forEach(block -> event.modify(AllBlockEntityTypes.TABLE_CLOTH.get(), block.get()));
+        ModBlocks.DYED_METAL_GIRDERS_ENCASED_SHAFT.forEach(block -> event.modify(AllBlockEntityTypes.ENCASED_SHAFT.get(), block.get()));
     }
 
     public void gatherRegistrateData(GatherDataEvent event) {

@@ -1,0 +1,37 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "createworldofcolor:block/light_blue_metal_girder_encased_shaft/block"
+      },
+      "when": {
+        "axis": "z"
+      }
+    },
+    {
+      "apply": {
+        "model": "createworldofcolor:block/light_blue_metal_girder_encased_shaft/block",
+        "y": 90
+      },
+      "when": {
+        "axis": "x"
+      }
+    },
+    {
+      "apply": {
+        "model": "createworldofcolor:block/light_blue_metal_girder_encased_shaft/block_top"
+      },
+      "when": {
+        "top": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createworldofcolor:block/light_blue_metal_girder_encased_shaft/block_bottom"
+      },
+      "when": {
+        "bottom": "true"
+      }
+    }
+  ]
+}

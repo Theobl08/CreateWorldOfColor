@@ -10,36 +10,54 @@ import net.createmod.catnip.data.Iterate;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 
 public class ColoredGirderBlockStateGenerator {
 
-	public static void blockStateWithShaft(DataGenContext<Block, GirderEncasedShaftBlock> c,
-										   RegistrateBlockstateProvider p) {
+	public static void blockStateWithShaft(DataGenContext<Block, ? extends GirderEncasedShaftBlock> c, RegistrateBlockstateProvider p, DyeColor color) {
 		MultiPartBlockStateBuilder builder = p.getMultipartBuilder(c.get());
+		String colorName = color.getSerializedName();
+
+		String path = "block/" + c.getName();
+
+		String baseTexture = "block/" + colorName + "_girder";
+		String particle = "block/copper/" + colorName + "_copper_roof_top";
+
+        BlockModelBuilder baseModel = p.models().withExistingParent(path + "/block", Create.asResource("block/metal_girder_encased_shaft/block"))
+				.texture("0", baseTexture)
+				.texture("particle", particle);
 
 		builder.part()
-			.modelFile(AssetLookup.partialBaseModel(c, p))
+//			.modelFile(AssetLookup.partialBaseModel(c, p))
+			.modelFile(baseModel)
 			.rotationY(0)
 			.addModel()
 			.condition(GirderEncasedShaftBlock.HORIZONTAL_AXIS, Axis.Z)
 			.end();
 
 		builder.part()
-			.modelFile(AssetLookup.partialBaseModel(c, p))
+//			.modelFile(AssetLookup.partialBaseModel(c, p))
+			.modelFile(baseModel)
 			.rotationY(90)
 			.addModel()
 			.condition(GirderEncasedShaftBlock.HORIZONTAL_AXIS, Axis.X)
 			.end();
 
 		builder.part()
-			.modelFile(AssetLookup.partialBaseModel(c, p, "top"))
+//			.modelFile(AssetLookup.partialBaseModel(c, p, "top"))
+			.modelFile(p.models().withExistingParent(path + "/block_top", Create.asResource("block/metal_girder_encased_shaft/block_top"))
+					.texture("0", baseTexture)
+					.texture("particle", particle))
 			.addModel()
 			.condition(GirderEncasedShaftBlock.TOP, true)
 			.end();
 
 		builder.part()
-			.modelFile(AssetLookup.partialBaseModel(c, p, "bottom"))
+//			.modelFile(AssetLookup.partialBaseModel(c, p, "bottom"))
+			.modelFile(p.models().withExistingParent(path + "/block_bottom", Create.asResource("block/metal_girder_encased_shaft/block_bottom"))
+					.texture("0", baseTexture)
+					.texture("particle", particle))
 			.addModel()
 			.condition(GirderEncasedShaftBlock.BOTTOM, true)
 			.end();

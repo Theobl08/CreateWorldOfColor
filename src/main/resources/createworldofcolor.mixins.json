@@ -15,6 +15,7 @@
     "PortableStorageInterfaceBlockEntityAccessor",
     "PortableStorageInterfaceMovementMixin",
     "PortableStorageInterfaceRendererMixin",
+    "ShaftBlockMixin",
     "SpoutBlockEntityAccessor",
     "SteamEngineBlockEntityMixin",
     "TrackBlockItemMixin",

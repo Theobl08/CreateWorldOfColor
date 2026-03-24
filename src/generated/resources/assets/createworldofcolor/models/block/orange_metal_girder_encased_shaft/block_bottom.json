@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/metal_girder_encased_shaft/block_bottom",
+  "textures": {
+    "0": "createworldofcolor:block/orange_girder",
+    "particle": "createworldofcolor:block/copper/orange_copper_roof_top"
+  }
+}

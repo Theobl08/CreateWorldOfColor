@@ -11,7 +11,10 @@ import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.RoofBlockCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
+import com.simibubi.create.content.decoration.girder.ConnectedGirderModel;
 import com.simibubi.create.content.decoration.girder.GirderBlock;
+import com.simibubi.create.content.decoration.girder.GirderBlockStateGenerator;
+import com.simibubi.create.content.decoration.girder.GirderEncasedShaftBlock;
 import com.simibubi.create.content.decoration.slidingDoor.SlidingDoorBlock;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
 import com.simibubi.create.content.fluids.drain.ItemDrainBlock;
@@ -54,6 +57,9 @@ import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.common.Tags;
@@ -66,6 +72,7 @@ import net.theobl.createworldofcolor.data.ModBuilderTransformers;
 import net.theobl.createworldofcolor.decoration.girder.ColoredConnectedGirderModel;
 import net.theobl.createworldofcolor.decoration.girder.ColoredGirderBlock;
 import net.theobl.createworldofcolor.decoration.girder.ColoredGirderBlockStateGenerator;
+import net.theobl.createworldofcolor.decoration.girder.ColoredGirderEncasedShaftBlock;
 import net.theobl.createworldofcolor.decoration.steamWhistle.ColoredWhistleBlock;
 import net.theobl.createworldofcolor.decoration.steamWhistle.ModWhistleGenerator;
 import net.theobl.createworldofcolor.fluids.ColoredPipeAttachmentModel;
@@ -380,6 +387,22 @@ public class ModBlocks {
                 .onRegister(CreateRegistrate.blockModel(() -> model -> new ColoredConnectedGirderModel(model, color)))
                 .item()
                 .transform(customItemModel())
+                .register();
+    });
+
+    public static final DyedBlockList<GirderEncasedShaftBlock> DYED_METAL_GIRDERS_ENCASED_SHAFT = new DyedBlockList<>( color -> {
+        String colorName = color.getSerializedName();
+        return REGISTRATE.block(colorName + "_metal_girder_encased_shaft", p -> new ColoredGirderEncasedShaftBlock(p, color))
+                .initialProperties(SharedProperties::softMetal)
+                .properties(p -> p.mapColor(color)
+                        .sound(SoundType.NETHERITE_BLOCK))
+                .transform(pickaxeOnly())
+                .blockstate((c, p) -> ColoredGirderBlockStateGenerator.blockStateWithShaft(c, p, color))
+                .loot((p, b) -> p.add(b, p.createSingleItemTable(DYED_METAL_GIRDERS.get(color).get())
+                        .withPool(p.applyExplosionCondition(AllBlocks.SHAFT.get(), LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(AllBlocks.SHAFT.get()))))))
+                .onRegister(CreateRegistrate.blockModel(() -> model -> new ColoredConnectedGirderModel(model, color)))
                 .register();
     });
 
