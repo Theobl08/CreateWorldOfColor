@@ -129,6 +129,7 @@ public class ModBlocks {
             .blockstate(new ColoredBracketGenerator(colorName)::generate)
             .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
             .transform(pickaxeOnly())
+            .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "block.create.metal_bracket"))
             .item(BracketBlockItem::new)
             .tag(AllTags.AllItemTags.INVALID_FOR_TRACK_PAVING.tag)
             .transform(ColoredBracketGenerator.itemModel(colorName))
