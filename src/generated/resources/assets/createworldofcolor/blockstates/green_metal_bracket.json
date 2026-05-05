@@ -1,0 +1,154 @@
+{
+  "variants": {
+    "axis_along_first=false,facing=down,type=cog": {
+      "model": "createworldofcolor:block/bracket/cog/ground_green",
+      "x": 180
+    },
+    "axis_along_first=false,facing=down,type=pipe": {
+      "model": "createworldofcolor:block/bracket/pipe/ground_green",
+      "x": 180
+    },
+    "axis_along_first=false,facing=down,type=shaft": {
+      "model": "createworldofcolor:block/bracket/shaft/ground_green",
+      "x": 180
+    },
+    "axis_along_first=false,facing=east,type=cog": {
+      "model": "createworldofcolor:block/bracket/cog/wall_green"
+    },
+    "axis_along_first=false,facing=east,type=pipe": {
+      "model": "createworldofcolor:block/bracket/pipe/wall_green"
+    },
+    "axis_along_first=false,facing=east,type=shaft": {
+      "model": "createworldofcolor:block/bracket/shaft/wall_green"
+    },
+    "axis_along_first=false,facing=north,type=cog": {
+      "model": "createworldofcolor:block/bracket/cog/wall_green",
+      "x": 90,
+      "y": 270
+    },
+    "axis_along_first=false,facing=north,type=pipe": {
+      "model": "createworldofcolor:block/bracket/pipe/wall_green",
+      "x": 90,
+      "y": 270
+    },
+    "axis_along_first=false,facing=north,type=shaft": {
+      "model": "createworldofcolor:block/bracket/shaft/wall_green",
+      "x": 90,
+      "y": 270
+    },
+    "axis_along_first=false,facing=south,type=cog": {
+      "model": "createworldofcolor:block/bracket/cog/wall_green",
+      "x": 90,
+      "y": 90
+    },
+    "axis_along_first=false,facing=south,type=pipe": {
+      "model": "createworldofcolor:block/bracket/pipe/wall_green",
+      "x": 90,
+      "y": 90
+    },
+    "axis_along_first=false,facing=south,type=shaft": {
+      "model": "createworldofcolor:block/bracket/shaft/wall_green",
+      "x": 90,
+      "y": 90
+    },
+    "axis_along_first=false,facing=up,type=cog": {
+      "model": "createworldofcolor:block/bracket/cog/ground_green"
+    },
+    "axis_along_first=false,facing=up,type=pipe": {
+      "model": "createworldofcolor:block/bracket/pipe/ground_green"
+    },
+    "axis_along_first=false,facing=up,type=shaft": {
+      "model": "createworldofcolor:block/bracket/shaft/ground_green"
+    },
+    "axis_along_first=false,facing=west,type=cog": {
+      "model": "createworldofcolor:block/bracket/cog/wall_green",
+      "y": 180
+    },
+    "axis_along_first=false,facing=west,type=pipe": {
+      "model": "createworldofcolor:block/bracket/pipe/wall_green",
+      "y": 180
+    },
+    "axis_along_first=false,facing=west,type=shaft": {
+      "model": "createworldofcolor:block/bracket/shaft/wall_green",
+      "y": 180
+    },
+    "axis_along_first=true,facing=down,type=cog": {
+      "model": "createworldofcolor:block/bracket/cog/ground_green",
+      "x": 180,
+      "y": 90
+    },
+    "axis_along_first=true,facing=down,type=pipe": {
+      "model": "createworldofcolor:block/bracket/pipe/ground_green",
+      "x": 180,
+      "y": 90
+    },
+    "axis_along_first=true,facing=down,type=shaft": {
+      "model": "createworldofcolor:block/bracket/shaft/ground_green",
+      "x": 180,
+      "y": 90
+    },
+    "axis_along_first=true,facing=east,type=cog": {
+      "model": "createworldofcolor:block/bracket/cog/wall_green",
+      "x": 90
+    },
+    "axis_along_first=true,facing=east,type=pipe": {
+      "model": "createworldofcolor:block/bracket/pipe/wall_green",
+      "x": 90
+    },
+    "axis_along_first=true,facing=east,type=shaft": {
+      "model": "createworldofcolor:block/bracket/shaft/wall_green",
+      "x": 90
+    },
+    "axis_along_first=true,facing=north,type=cog": {
+      "model": "createworldofcolor:block/bracket/cog/wall_green",
+      "y": 270
+    },
+    "axis_along_first=true,facing=north,type=pipe": {
+      "model": "createworldofcolor:block/bracket/pipe/wall_green",
+      "y": 270
+    },
+    "axis_along_first=true,facing=north,type=shaft": {
+      "model": "createworldofcolor:block/bracket/shaft/wall_green",
+      "y": 270
+    },
+    "axis_along_first=true,facing=south,type=cog": {
+      "model": "createworldofcolor:block/bracket/cog/wall_green",
+      "y": 90
+    },
+    "axis_along_first=true,facing=south,type=pipe": {
+      "model": "createworldofcolor:block/bracket/pipe/wall_green",
+      "y": 90
+    },
+    "axis_along_first=true,facing=south,type=shaft": {
+      "model": "createworldofcolor:block/bracket/shaft/wall_green",
+      "y": 90
+    },
+    "axis_along_first=true,facing=up,type=cog": {
+      "model": "createworldofcolor:block/bracket/cog/ground_green",
+      "y": 90
+    },
+    "axis_along_first=true,facing=up,type=pipe": {
+      "model": "createworldofcolor:block/bracket/pipe/ground_green",
+      "y": 90
+    },
+    "axis_along_first=true,facing=up,type=shaft": {
+      "model": "createworldofcolor:block/bracket/shaft/ground_green",
+      "y": 90
+    },
+    "axis_along_first=true,facing=west,type=cog": {
+      "model": "createworldofcolor:block/bracket/cog/wall_green",
+      "x": 90,
+      "y": 180
+    },
+    "axis_along_first=true,facing=west,type=pipe": {
+      "model": "createworldofcolor:block/bracket/pipe/wall_green",
+      "x": 90,
+      "y": 180
+    },
+    "axis_along_first=true,facing=west,type=shaft": {
+      "model": "createworldofcolor:block/bracket/shaft/wall_green",
+      "x": 90,
+      "y": 180
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/bracket/pipe/wall",
+  "textures": {
+    "bracket": "createworldofcolor:block/bracket_red",
+    "plate": "createworldofcolor:block/bracket_plate_red"
+  }
+}

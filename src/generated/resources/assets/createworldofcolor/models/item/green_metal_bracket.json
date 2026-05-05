@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/bracket/item",
+  "textures": {
+    "bracket": "createworldofcolor:block/bracket_green",
+    "plate": "createworldofcolor:block/bracket_plate_green"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/bracket/shaft/ground",
+  "textures": {
+    "bracket": "createworldofcolor:block/bracket_light_gray",
+    "plate": "createworldofcolor:block/bracket_plate_light_gray"
+  }
+}

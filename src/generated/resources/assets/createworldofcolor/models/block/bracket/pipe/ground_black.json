@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/bracket/pipe/ground",
+  "textures": {
+    "bracket": "createworldofcolor:block/bracket_black",
+    "plate": "createworldofcolor:block/bracket_plate_black"
+  }
+}

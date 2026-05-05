@@ -9,6 +9,9 @@ import com.simibubi.create.content.contraptions.actors.seat.SeatMovementBehaviou
 import com.simibubi.create.content.decoration.MetalLadderBlock;
 import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.RoofBlockCTBehaviour;
+import com.simibubi.create.content.decoration.bracket.BracketBlock;
+import com.simibubi.create.content.decoration.bracket.BracketBlockItem;
+import com.simibubi.create.content.decoration.bracket.BracketGenerator;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.decoration.girder.ConnectedGirderModel;
@@ -35,6 +38,7 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullBiFunction;
 import com.tterrag.registrate.util.nullness.NonNullConsumer;
@@ -69,6 +73,7 @@ import net.theobl.createworldofcolor.contraptions.actors.psi.ColoredPortableStor
 import net.theobl.createworldofcolor.data.MetalBars;
 import net.theobl.createworldofcolor.data.ModBlockStateGen;
 import net.theobl.createworldofcolor.data.ModBuilderTransformers;
+import net.theobl.createworldofcolor.decoration.bracket.ColoredBracketGenerator;
 import net.theobl.createworldofcolor.decoration.girder.ColoredConnectedGirderModel;
 import net.theobl.createworldofcolor.decoration.girder.ColoredGirderBlock;
 import net.theobl.createworldofcolor.decoration.girder.ColoredGirderBlockStateGenerator;
@@ -117,6 +122,18 @@ public class ModBlocks {
 //                .transform(BuilderTransformers.casing(() -> ModSpriteShifts.DYED_CASINGS.get(color)))
 //                .register();
 //    });
+
+    public static final DyedBlockList<BracketBlock> DYED_METAL_BRACKETS = new DyedBlockList<>(color -> {
+        String colorName = color.getSerializedName();
+        return REGISTRATE.block(colorName + "_metal_bracket", BracketBlock::new)
+            .blockstate(new ColoredBracketGenerator(colorName)::generate)
+            .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+            .transform(pickaxeOnly())
+            .item(BracketBlockItem::new)
+            .tag(AllTags.AllItemTags.INVALID_FOR_TRACK_PAVING.tag)
+            .transform(ColoredBracketGenerator.itemModel(colorName))
+            .register();
+    });
 
     public static final DyedBlockList<FluidPipeBlock> FLUID_PIPES = new DyedBlockList<>(color -> {
         String colorName = color.getSerializedName();
