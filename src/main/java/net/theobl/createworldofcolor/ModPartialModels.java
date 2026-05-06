@@ -68,9 +68,9 @@ public class ModPartialModels {
             }
             COLORED_METAL_GIRDER_BRACKETS.put(color, metalGirderBrackets);
 
-            COLORED_GIRDER_SEGMENT_TOP.put(color, block(id + "metal_girder/segment_top"));
-            COLORED_GIRDER_SEGMENT_MIDDLE.put(color, block(id + "metal_girder/segment_middle"));
-            COLORED_GIRDER_SEGMENT_BOTTOM.put(color, block(id + "metal_girder/segment_bottom"));
+            COLORED_GIRDER_SEGMENT_TOP.put(color, block(id + "_metal_girder/segment_top"));
+            COLORED_GIRDER_SEGMENT_MIDDLE.put(color, block(id + "_metal_girder/segment_middle"));
+            COLORED_GIRDER_SEGMENT_BOTTOM.put(color, block(id + "_metal_girder/segment_bottom"));
         }
 
         for (ComponentPartials type : ComponentPartials.values()) {
