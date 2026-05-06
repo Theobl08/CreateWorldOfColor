@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "createworldofcolor.refmap.json",
   "mixins": [
+    "AllCreatePonderScenesMixin",
     "BoilerDataMixin",
     "CreateJEIMixin",
     "FluidPropagatorMixin",
