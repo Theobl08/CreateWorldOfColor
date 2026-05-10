@@ -11,12 +11,10 @@ import com.simibubi.create.content.decoration.MetalScaffoldingBlock;
 import com.simibubi.create.content.decoration.RoofBlockCTBehaviour;
 import com.simibubi.create.content.decoration.bracket.BracketBlock;
 import com.simibubi.create.content.decoration.bracket.BracketBlockItem;
-import com.simibubi.create.content.decoration.bracket.BracketGenerator;
+import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
-import com.simibubi.create.content.decoration.girder.ConnectedGirderModel;
 import com.simibubi.create.content.decoration.girder.GirderBlock;
-import com.simibubi.create.content.decoration.girder.GirderBlockStateGenerator;
 import com.simibubi.create.content.decoration.girder.GirderEncasedShaftBlock;
 import com.simibubi.create.content.decoration.slidingDoor.SlidingDoorBlock;
 import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
@@ -26,6 +24,9 @@ import com.simibubi.create.content.fluids.pipes.*;
 import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
 import com.simibubi.create.content.fluids.pump.PumpBlock;
 import com.simibubi.create.content.fluids.tank.*;
+import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
+import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogwheelBlock;
+import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedShaftBlock;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
 import com.simibubi.create.content.logistics.tableCloth.TableClothBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
@@ -33,15 +34,16 @@ import com.simibubi.create.content.trains.track.*;
 import com.simibubi.create.foundation.block.CopperBlockSet;
 import com.simibubi.create.foundation.block.DyedBlockList;
 import com.simibubi.create.foundation.data.AssetLookup;
+import com.simibubi.create.foundation.data.BuilderTransformers;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
-import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullBiFunction;
 import com.tterrag.registrate.util.nullness.NonNullConsumer;
+import net.createmod.catnip.data.Couple;
 import net.createmod.catnip.platform.CatnipServices;
 import net.createmod.catnip.registry.RegisteredObjectsHelper;
 import net.minecraft.client.renderer.RenderType;
@@ -122,6 +124,44 @@ public class ModBlocks {
 //                .transform(BuilderTransformers.casing(() -> ModSpriteShifts.DYED_CASINGS.get(color)))
 //                .register();
 //    });
+
+    public static final DyedBlockList<CasingBlock> DYED_ANDESITE_CASING = new DyedBlockList<>(color ->
+            REGISTRATE.block(color.getName() + "_andesite_casing", CasingBlock::new)
+                    .properties(p -> p.mapColor(color))
+                    .transform(BuilderTransformers.casing(() -> ModSpriteShifts.DYED_ANDESITE_CASING.get(color)))
+                    .register()
+    );
+
+    public static final DyedBlockList<EncasedShaftBlock> DYED_ANDESITE_ENCASED_SHAFT = new DyedBlockList<>(color ->
+            REGISTRATE.block(color.getName() + "_andesite_encased_shaft", p -> new EncasedShaftBlock(p, () -> DYED_ANDESITE_CASING.get(color).get()))
+                    .properties(p -> p.mapColor(color))
+                    .transform(ModBuilderTransformers.encasedShaft(color.getName() + "_andesite", () -> ModSpriteShifts.DYED_ANDESITE_CASING.get(color)))
+                    .transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
+                    .transform(axeOrPickaxe())
+                    .register()
+    );
+
+    public static final DyedBlockList<EncasedCogwheelBlock> DYED_ANDESITE_ENCASED_COGWHEEL = new DyedBlockList<>(color ->
+            REGISTRATE.block(color.getName() + "_andesite_encased_cogwheel", p -> new EncasedCogwheelBlock(p, false, () -> DYED_ANDESITE_CASING.get(color).get()))
+                    .properties(p -> p.mapColor(color))
+                    .transform(ModBuilderTransformers.encasedCogwheel(color.getName() + "_andesite", () -> ModSpriteShifts.DYED_ANDESITE_CASING.get(color)))
+                    .transform(EncasingRegistry.addVariantTo(AllBlocks.COGWHEEL))
+                    .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCogCTBehaviour(ModSpriteShifts.DYED_ANDESITE_CASING.get(color),
+                            Couple.create(ModSpriteShifts.DYED_ANDESITE_ENCASED_COGWHEEL_SIDE.get(color),
+                                    ModSpriteShifts.DYED_ANDESITE_ENCASED_COGWHEEL_OTHERSIDE.get(color)))))
+                    .transform(axeOrPickaxe())
+                    .register()
+    );
+
+    public static final DyedBlockList<EncasedCogwheelBlock> DYED_ANDESITE_ENCASED_LARGE_COGWHEEL = new DyedBlockList<>(color ->
+            REGISTRATE.block(color.getName() + "_andesite_encased_large_cogwheel",
+                    p -> new EncasedCogwheelBlock(p, true, () -> DYED_ANDESITE_CASING.get(color).get()))
+            .properties(p -> p.mapColor(color))
+            .transform(ModBuilderTransformers.encasedLargeCogwheel(color.getName() + "_andesite", () -> ModSpriteShifts.DYED_ANDESITE_CASING.get(color)))
+            .transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
+            .transform(axeOrPickaxe())
+            .register()
+    );
 
     public static final DyedBlockList<BracketBlock> DYED_METAL_BRACKETS = new DyedBlockList<>(color -> {
         String colorName = color.getSerializedName();

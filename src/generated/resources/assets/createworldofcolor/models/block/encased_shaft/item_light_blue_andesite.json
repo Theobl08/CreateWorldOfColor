@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/encased_shaft/item",
+  "textures": {
+    "casing": "createworldofcolor:block/light_blue_andesite_casing",
+    "opening": "createworldofcolor:block/light_blue_andesite_gearbox"
+  }
+}

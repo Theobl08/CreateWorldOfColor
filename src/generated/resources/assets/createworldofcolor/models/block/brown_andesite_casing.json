@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "createworldofcolor:block/brown_andesite_casing"
+  }
+}

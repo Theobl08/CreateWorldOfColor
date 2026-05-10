@@ -1,0 +1,67 @@
+package net.theobl.createworldofcolor.mixin;
+
+import com.simibubi.create.content.kinetics.belt.BeltBlock;
+import com.simibubi.create.content.kinetics.belt.BeltBlockEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.theobl.createworldofcolor.ModBlocks;
+import net.theobl.createworldofcolor.kinetics.belt.ModBeltCasingType;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+
+import java.util.function.Supplier;
+
+//Credits: Inspired from "Create: Encased" belt casing mixin code, by Iglee42 (MIT Licensed)
+@Mixin(BeltBlock.class)
+public abstract class BeltBlockMixin {
+
+    @Shadow (remap = false) public abstract void updateCoverProperty(LevelAccessor world, BlockPos pos, BlockState state);
+
+    @Inject(method = "useItemOn",
+            at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;isIn(Lnet/minecraft/world/item/ItemStack;)Z", ordinal = 1, shift = At.Shift.BEFORE),
+            locals = LocalCapture.CAPTURE_FAILSOFT,
+            cancellable = true,
+            remap = false)
+    private void encased$otherCasingUses(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult, CallbackInfoReturnable<ItemInteractionResult> cir, boolean isWrench, boolean isConnector, boolean isShaft) {
+        for (DyeColor color : DyeColor.values()) {
+            if (encased$customCasingUse(ModBlocks.DYED_ANDESITE_CASING.get(color), ModBeltCasingType.DYED_ANDESITE.get(color), stack, level, pos, player)) {
+                cir.setReturnValue(ItemInteractionResult.SUCCESS);
+                return;
+            }
+        }
+    }
+
+    @Unique
+    private boolean encased$customCasingUse(Supplier<? extends Block> entry, BeltBlockEntity.CasingType type, ItemStack heldItem, Level world, BlockPos pos, Player player) {
+        if (entry == null) return false;
+        if (heldItem.is(entry.get().asItem()) && type != null) {
+            if (world.getBlockEntity(pos) instanceof BeltBlockEntity be)
+                be.setCasingType(type);
+            updateCoverProperty(world, pos, world.getBlockState(pos));
+
+            SoundType soundType = entry.get().defaultBlockState()
+                    .getSoundType(world, pos, player);
+            world.playSound(null, pos, soundType.getPlaceSound(), SoundSource.BLOCKS,
+                    (soundType.getVolume() + 1.0F) / 2.0F, soundType.getPitch() * 0.8F);
+
+            return true;
+        }
+        return false;
+    }
+}

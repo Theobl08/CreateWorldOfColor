@@ -6,6 +6,10 @@
   "refmap": "createworldofcolor.refmap.json",
   "mixins": [
     "AllCreatePonderScenesMixin",
+    "BeltBlockEntityMixin",
+    "BeltBlockMixin",
+    "BeltCasingTypeMixin",
+    "BeltModelMixin",
     "BoilerDataMixin",
     "CreateJEIMixin",
     "FluidPropagatorMixin",

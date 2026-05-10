@@ -1,10 +1,13 @@
 package net.theobl.createworldofcolor;
 
+import com.simibubi.create.Create;
 import com.simibubi.create.foundation.block.connected.AllCTTypes;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.block.connected.CTSpriteShifter;
 import com.simibubi.create.foundation.block.connected.CTType;
 import net.createmod.catnip.lang.Lang;
+import net.createmod.catnip.render.SpriteShiftEntry;
+import net.createmod.catnip.render.SpriteShifter;
 import net.minecraft.world.item.DyeColor;
 
 import java.util.EnumMap;
@@ -21,7 +24,12 @@ public class ModSpriteShifts {
     public static final Map<DyeColor, CTSpriteShiftEntry> DYED_SCAFFOLDS = new EnumMap<>(DyeColor.class),
             DYED_SCAFFOLDS_INSIDE = new EnumMap<>(DyeColor.class);
 
-    public static final Map<DyeColor, CTSpriteShiftEntry> DYED_CASINGS = new EnumMap<>(DyeColor.class);
+    public static final Map<DyeColor, CTSpriteShiftEntry> DYED_CASINGS = new EnumMap<>(DyeColor.class),
+            DYED_ANDESITE_CASING = new EnumMap<>(DyeColor.class),
+            DYED_ANDESITE_ENCASED_COGWHEEL_SIDE = new EnumMap<>(DyeColor.class),
+            DYED_ANDESITE_ENCASED_COGWHEEL_OTHERSIDE = new EnumMap<>(DyeColor.class);
+
+    public static final Map<DyeColor, SpriteShiftEntry> DYED_ANDESITE_BELT_CASING = new EnumMap<>(DyeColor.class);
 
     public static final Map<DyeColor, CTSpriteShiftEntry> COLORED_GIRDER_POLE = new EnumMap<>(DyeColor.class);
 
@@ -36,6 +44,11 @@ public class ModSpriteShifts {
             DYED_SCAFFOLDS_INSIDE.put(color, horizontal("scaffold/"+ id + "_scaffold_inside"));
 
             DYED_CASINGS.put(color, omni(id + "_casing"));
+            DYED_ANDESITE_CASING.put(color, omni(id + "_andesite_casing"));
+            DYED_ANDESITE_ENCASED_COGWHEEL_SIDE.put(color, vertical(id + "_andesite_encased_cogwheel_side"));
+            DYED_ANDESITE_ENCASED_COGWHEEL_OTHERSIDE.put(color, horizontal(id + "_andesite_encased_cogwheel_side"));
+            DYED_ANDESITE_BELT_CASING.put(color,
+                    getFromCreate("block/belt/brass_belt_casing", "block/belt/" + id + "_andesite_belt_casing"));
 
             COLORED_GIRDER_POLE.put(color, vertical(id + "_girder_pole_side"));
 
@@ -68,5 +81,9 @@ public class ModSpriteShifts {
 
     private static CTSpriteShiftEntry getCT(CTType type, String blockTextureName) {
         return getCT(type, blockTextureName, blockTextureName);
+    }
+
+    private static SpriteShiftEntry getFromCreate(String originalLocation, String targetLocation) {
+        return SpriteShifter.get(Create.asResource(originalLocation), CreateWorldOfColor.asResource(targetLocation));
     }
 }

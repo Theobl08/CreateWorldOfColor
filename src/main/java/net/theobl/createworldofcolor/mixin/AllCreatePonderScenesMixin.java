@@ -5,6 +5,8 @@ import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.simibubi.create.infrastructure.ponder.AllCreatePonderScenes;
 import com.simibubi.create.infrastructure.ponder.AllCreatePonderTags;
+import com.simibubi.create.infrastructure.ponder.scenes.BeltScenes;
+import com.simibubi.create.infrastructure.ponder.scenes.KineticsScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.MovementActorScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.SteamScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.fluid.*;
@@ -23,6 +25,13 @@ public abstract class AllCreatePonderScenesMixin {
     @ModifyExpressionValue(method = "register", at = @At(value = "MIXINEXTRAS:EXPRESSION"))
     private static PonderSceneRegistrationHelper<ItemProviderEntry<?, ?>> createWorldOfColor$addPonderScenes(PonderSceneRegistrationHelper<ItemProviderEntry<?, ?>> original) {
         // Link our blocks to their vanilla Create counterpart ponder scenes
+        original.forComponents(ModBlocks.DYED_ANDESITE_ENCASED_SHAFT.toArray())
+                .addStoryBoard("shaft/encasing", KineticsScenes::shaftsCanBeEncased);
+
+        original.forComponents(ModBlocks.DYED_ANDESITE_CASING.toArray())
+                .addStoryBoard("shaft/encasing", KineticsScenes::shaftsCanBeEncased)
+                .addStoryBoard("belt/encasing", BeltScenes::beltsCanBeEncased);
+
         original.forComponents(ModBlocks.FLUID_PIPES.toArray())
                 .addStoryBoard("fluid_pipe/flow", PipeScenes::flow, AllCreatePonderTags.FLUIDS)
                 .addStoryBoard("fluid_pipe/interaction", PipeScenes::interaction)
