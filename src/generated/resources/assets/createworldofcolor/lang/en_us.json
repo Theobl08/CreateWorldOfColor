@@ -622,5 +622,21 @@
   "block.createworldofcolor.yellow_spout": "Yellow Spout",
   "block.createworldofcolor.yellow_steam_engine": "Yellow Steam Engine",
   "block.createworldofcolor.yellow_steam_whistle": "Yellow Steam Whistle",
-  "block.createworldofcolor.yellow_track": "Yellow Train Track"
+  "block.createworldofcolor.yellow_track": "Yellow Train Track",
+  "item.createworldofcolor.black_potato_cannon": "Black Potato Cannon",
+  "item.createworldofcolor.blue_potato_cannon": "Blue Potato Cannon",
+  "item.createworldofcolor.brown_potato_cannon": "Brown Potato Cannon",
+  "item.createworldofcolor.cyan_potato_cannon": "Cyan Potato Cannon",
+  "item.createworldofcolor.gray_potato_cannon": "Gray Potato Cannon",
+  "item.createworldofcolor.green_potato_cannon": "Green Potato Cannon",
+  "item.createworldofcolor.light_blue_potato_cannon": "Light Blue Potato Cannon",
+  "item.createworldofcolor.light_gray_potato_cannon": "Light Gray Potato Cannon",
+  "item.createworldofcolor.lime_potato_cannon": "Lime Potato Cannon",
+  "item.createworldofcolor.magenta_potato_cannon": "Magenta Potato Cannon",
+  "item.createworldofcolor.orange_potato_cannon": "Orange Potato Cannon",
+  "item.createworldofcolor.pink_potato_cannon": "Pink Potato Cannon",
+  "item.createworldofcolor.purple_potato_cannon": "Purple Potato Cannon",
+  "item.createworldofcolor.red_potato_cannon": "Red Potato Cannon",
+  "item.createworldofcolor.white_potato_cannon": "White Potato Cannon",
+  "item.createworldofcolor.yellow_potato_cannon": "Yellow Potato Cannon"
 }

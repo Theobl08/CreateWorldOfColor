@@ -2,6 +2,7 @@ package net.theobl.createworldofcolor;
 
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.AllBlockEntityTypes;
+import com.simibubi.create.content.equipment.potatoCannon.PotatoCannonItemRenderer;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
@@ -25,15 +26,13 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.client.event.RegisterItemDecorationsEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.theobl.createworldofcolor.config.Config;
-import net.theobl.createworldofcolor.data.ModDataMapProvider;
-import net.theobl.createworldofcolor.data.ModRecipeProvider;
-import net.theobl.createworldofcolor.data.ModStandardRecipeGen;
-import net.theobl.createworldofcolor.data.ModTagsProvider;
+import net.theobl.createworldofcolor.data.*;
 import net.theobl.createworldofcolor.fluids.hosePulley.ColoredHosePulleyBlockEntity;
 import net.theobl.createworldofcolor.fluids.spout.ColoredSpoutBlockEntity;
 import net.theobl.createworldofcolor.fluids.tank.ColoredFluidTankBlockEntity;
@@ -66,6 +65,7 @@ public class CreateWorldOfColor {
 
         ModTrackMaterial.register();
         ModCreativeModeTabs.register(modEventBus);
+        ModItems.register();
         ModBlocks.register();
         ModBlockEntityTypes.register();
 
@@ -117,6 +117,7 @@ public class CreateWorldOfColor {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         generator.addProvider(event.includeServer(), new ModStandardRecipeGen(output, lookupProvider));
+        generator.addProvider(event.includeServer(), new ModMechanicalCraftingRecipeGen(output, lookupProvider));
         generator.addProvider(event.includeServer(), new ModDataMapProvider(output, lookupProvider));
 
         if (event.includeServer()) {
@@ -139,6 +140,11 @@ public class CreateWorldOfColor {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             ModPartialModels.init();
+        }
+
+        @SubscribeEvent
+        public static void registerItemDecorations(RegisterItemDecorationsEvent event) {
+            ModItems.POTATO_CANNONS.values().forEach(item -> event.register(item, PotatoCannonItemRenderer.DECORATOR));
         }
     }
 

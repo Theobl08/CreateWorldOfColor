@@ -1,0 +1,7 @@
+{
+  "parent": "create:item/potato_cannon/item",
+  "textures": {
+    "1": "createworldofcolor:item/blue_potato_cannon",
+    "particle": "createworldofcolor:block/blue_casing"
+  }
+}
