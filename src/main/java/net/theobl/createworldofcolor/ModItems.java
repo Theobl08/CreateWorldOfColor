@@ -1,7 +1,6 @@
 package net.theobl.createworldofcolor;
 
 import com.simibubi.create.Create;
-import com.simibubi.create.content.equipment.potatoCannon.PotatoCannonItem;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.core.registries.Registries;
@@ -9,6 +8,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.Tags;
+import net.theobl.createworldofcolor.equipment.potatoCannon.ColoredPotatoCannonItem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,8 +22,8 @@ public class ModItems {
         REGISTRATE.defaultCreativeTab("createworldofcolor");
     }
 
-    public static final Map<DyeColor, ItemEntry<PotatoCannonItem>> POTATO_CANNONS = dyedItemList(color ->
-            REGISTRATE.item(color.getName() + "_potato_cannon", PotatoCannonItem::new)
+    public static final Map<DyeColor, ItemEntry<ColoredPotatoCannonItem>> POTATO_CANNONS = dyedItemList(color ->
+            REGISTRATE.item(color.getName() + "_potato_cannon", ColoredPotatoCannonItem::new)
                     .properties(p -> p.durability(100))
                     .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "item.create.potato_cannon"))
                     .model((c, p) -> {
